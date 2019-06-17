@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">RandomUsers_Task</string>
+
+    <string name="name">name</string>
+    <string name="city">city</string>
+    <string name="image">bitmap</string>
+    <string name="email">email</string>
+    <string name="phone">phone</string>
+
+
+</resources>
