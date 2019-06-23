@@ -2,9 +2,9 @@ package com.olehmesh.randomusers_task;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.widget.TextView;
+import androidx.appcompat.widget.AppCompatTextView;
 
-public class CustomTextView extends TextView {
+public class CustomTextView extends AppCompatTextView {
 
     public CustomTextView( Context context, AttributeSet attrs ) {
         super( context, attrs );

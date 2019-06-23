@@ -2,12 +2,12 @@ package com.olehmesh.randomusers_task;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.bumptech.glide.Glide;
@@ -57,6 +57,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ItemViewHolder
             @Override
             public void onClick(View view, int position, boolean isLongClick) {
 
+
+
+
+
+
                 intent = new Intent(view.getContext(), DetailActivity.class);
                 intent.putExtra(String.valueOf(R.string.name), itemViewHolder.tvName.getText());
                 intent.putExtra(String.valueOf(R.string.city), itemViewHolder.tvCity.getText());
@@ -64,6 +69,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ItemViewHolder
              // itemViewHolder.ivAvatar.setDrawingCacheEnabled(true);
             //  Bitmap bitmap = itemViewHolder.ivAvatar.getDrawingCache();
              // intent.putExtra(String.valueOf(R.string.bitmap), bitmap);
+
+
                 intent.putExtra(String.valueOf(R.string.image), mlist.get(position).getPicture().getLarge());
 
                 intent.putExtra(String.valueOf(R.string.email), mlist.get(position).getEmail());

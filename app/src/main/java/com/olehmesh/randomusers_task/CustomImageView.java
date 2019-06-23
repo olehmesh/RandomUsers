@@ -5,8 +5,9 @@ import android.graphics.Canvas;
 import android.graphics.Path;
 import android.graphics.RectF;
 import android.util.AttributeSet;
+import androidx.appcompat.widget.AppCompatImageView;
 
-public class CustomImageView extends android.support.v7.widget.AppCompatImageView {
+public class CustomImageView extends AppCompatImageView {
 
     public CustomImageView(Context context) {
         super(context);

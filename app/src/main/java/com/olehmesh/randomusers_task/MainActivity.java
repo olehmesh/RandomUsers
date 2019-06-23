@@ -2,18 +2,18 @@ package com.olehmesh.randomusers_task;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
 
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.olehmesh.randomusers_task.network.api_pojo.ApiResponse;
 import com.olehmesh.randomusers_task.network.api_pojo.Result;
 
@@ -38,8 +38,6 @@ public class MainActivity extends AppCompatActivity {
     ProgressBar progressBar;
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
