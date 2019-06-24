@@ -1,4 +1,4 @@
-package com.olehmesh.randomusers_task;
+package com.olehmesh.randomusers_task.custom_views;
 
 import android.content.Context;
 import android.graphics.Canvas;

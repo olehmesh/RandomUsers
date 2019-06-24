@@ -1,5 +1,5 @@
 
-package com.olehmesh.randomusers_task.network.api_pojo;
+package com.olehmesh.randomusers_task.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

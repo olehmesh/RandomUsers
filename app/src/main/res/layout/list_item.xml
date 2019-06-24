@@ -17,7 +17,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <com.olehmesh.randomusers_task.CustomImageView
+    <com.olehmesh.randomusers_task.custom_views.CustomImageView
             android:id="@+id/ivAvatar"
             android:layout_width="90dp"
             android:layout_height="70dp"
@@ -29,7 +29,7 @@
             app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.0"/>
 
-    <com.olehmesh.randomusers_task.CustomTextView
+    <com.olehmesh.randomusers_task.custom_views.CustomTextView
             android:id="@+id/tvFirstName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintVertical_bias="0.0"/>
 
-    <com.olehmesh.randomusers_task.CustomTextView
+    <com.olehmesh.randomusers_task.custom_views.CustomTextView
             android:id="@+id/tvCity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

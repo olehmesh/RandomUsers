@@ -1,4 +1,4 @@
-package com.olehmesh.randomusers_task;
+package com.olehmesh.randomusers_task.common;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,17 +13,20 @@ import butterknife.ButterKnife;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
-import com.olehmesh.randomusers_task.network.api_pojo.Result;
+import com.olehmesh.randomusers_task.R;
+import com.olehmesh.randomusers_task.custom_views.CustomTextView;
+import com.olehmesh.randomusers_task.models.Result;
+import com.olehmesh.randomusers_task.views.DetailActivity;
 
 import java.util.List;
 
-public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ItemViewHolder> {
+public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ItemViewHolder> {
 
     Context context;
     List<Result> mlist;
     Intent intent;
 
-    public UserAdapter(Context context, List<Result> list) {
+    public UsersAdapter(Context context, List<Result> list) {
         this.context = context;
         this.mlist = list;
 
@@ -56,11 +59,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ItemViewHolder
 
             @Override
             public void onClick(View view, int position, boolean isLongClick) {
-
-
-
-
-
 
                 intent = new Intent(view.getContext(), DetailActivity.class);
                 intent.putExtra(String.valueOf(R.string.name), itemViewHolder.tvName.getText());
