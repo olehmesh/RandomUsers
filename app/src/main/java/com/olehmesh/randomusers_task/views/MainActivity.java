@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements UsersContract.Vie
 
     @Override
     public void loadDataInList(List<Result> users) {
-        adapter = new UsersAdapter(this, list);
+        adapter = new UsersAdapter(list);
         adapter.setData(users);
         recyclerView.setAdapter(adapter);
     }

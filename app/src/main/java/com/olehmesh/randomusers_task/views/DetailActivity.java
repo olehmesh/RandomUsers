@@ -36,10 +36,6 @@ public class DetailActivity extends AppCompatActivity {
         tvDetailName.setText("Name: " + getIntent().getStringExtra(String.valueOf(R.string.name)));
         tvDetailCity.setText("City: " + getIntent().getStringExtra(String.valueOf(R.string.city)));
 
-       // Bundle b = getIntent().getExtras();
-      //  Bitmap bitmap = b.getParcelable(String.valueOf(R.string.bitmap));
-     //   ivDetailLarge.setImageBitmap(bitmap);
-
         Glide.with(this).asBitmap()
                 .load(getIntent().getStringExtra(String.valueOf(R.string.image)))
                 .apply(new RequestOptions().override(Target.SIZE_ORIGINAL).encodeQuality(100))
