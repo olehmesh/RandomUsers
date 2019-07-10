@@ -10,5 +10,10 @@ class Constants {
         const val GET_API = "api/?inc=name,location,picture,phone,email"
 
 
+        const val NAME = "name"
+        const val CITY = "city"
+        const val IMAGE = "image"
+        const val EMAIL = "email"
+        const val PHONE = "phone"
     }
 }

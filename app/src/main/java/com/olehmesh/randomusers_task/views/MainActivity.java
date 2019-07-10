@@ -15,7 +15,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.olehmesh.randomusers_task.R;
-import com.olehmesh.randomusers_task.common.UsersAdapter;
+import com.olehmesh.randomusers_task.adapters.UsersAdapter;
 import com.olehmesh.randomusers_task.common.UsersContract;
 import com.olehmesh.randomusers_task.presenters.UsersPresenter;
 import com.olehmesh.randomusers_task.models.Result;
@@ -23,7 +23,6 @@ import com.olehmesh.randomusers_task.models.Result;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements UsersContract.View {
-    Context context;
     List<Result> list;
     UsersAdapter adapter;
 
@@ -96,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements UsersContract.Vie
 
     @Override
     public void loadDataInList(List<Result> users) {
-        adapter = new UsersAdapter(context, list);
+        adapter = new UsersAdapter(this, list);
         adapter.setData(users);
         recyclerView.setAdapter(adapter);
     }
