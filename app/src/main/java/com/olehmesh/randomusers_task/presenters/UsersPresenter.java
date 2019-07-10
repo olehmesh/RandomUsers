@@ -18,7 +18,7 @@ public class UsersPresenter implements UsersContract.Presenter {
     @Override
     public void loadUsers() {
 
-        LoadUserTask.getUsers(new Callback<List<Result>>() {
+        LoadUserTask.INSTANCE.getUsers(new Callback<List<Result>>() {
 
             @Override
             public void returnResult(List<Result> users) {
