@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'androidx.navigation.safeargs'
 //apply plugin: 'kotlin-kapt'
 
 
@@ -11,61 +12,68 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+
+    androidExtensions {
+        experimental = true
+    }
+
     compileSdkVersion 29
     defaultConfig {
-                applicationId "com.olehmesh.randomusers_task"
-                minSdkVersion 19
-                targetSdkVersion 29
-                versionCode 1
-                versionName "1.0"
-                testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-                multiDexEnabled true
-            }
-            buildTypes {
-                release {
-                    minifyEnabled false
-                    proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-                }
-            }
+        applicationId "com.olehmesh.randomusers_task"
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+}
 
-        dependencies {
-            implementation fileTree(dir: 'libs', include: ['*.jar'])
-            implementation 'android.arch.navigation:navigation-fragment:1.0.0'
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'android.arch.navigation:navigation-fragment:1.0.0'
 
-            annotationProcessor 'com.google.auto.value:auto-value:1.5.2'
-         //   implementation 'com.arello-mobile:moxy:1.5.5'
-          //  implementation 'com.arello-mobile:moxy-android:1.5.5'
-          //  implementation 'tech.schoolhelper:moxy-x-androidx:1.7.0'
-         //   compileOnly 'com.arello-mobile:moxy-compiler:1.5.5'
-         //   kapt 'com.arello-mobile:moxy-compiler:1.5.5'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
-            implementation 'androidx.multidex:multidex:2.0.1'
-            implementation 'androidx.appcompat:appcompat:1.0.2'
-            implementation 'androidx.recyclerview:recyclerview:1.0.0'
-            implementation 'androidx.cardview:cardview:1.0.0'
-            implementation 'com.google.android.material:material:1.1.0-alpha07'
+    annotationProcessor 'com.google.auto.value:auto-value:1.5.2'
+    //   implementation 'com.arello-mobile:moxy:1.5.5'
+    //  implementation 'com.arello-mobile:moxy-android:1.5.5'
+    //  implementation 'tech.schoolhelper:moxy-x-androidx:1.7.0'
+    //   compileOnly 'com.arello-mobile:moxy-compiler:1.5.5'
+    //   kapt 'com.arello-mobile:moxy-compiler:1.5.5'
 
-            implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-            implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-            testImplementation 'junit:junit:4.12'
-            androidTestImplementation 'androidx.test:runner:1.2.0'
-            androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'com.google.android.material:material:1.1.0-alpha07'
 
-            implementation 'io.reactivex.rxjava2:rxjava:2.2.8'
-            implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-            implementation 'com.jakewharton:butterknife:10.1.0'
-            annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.8'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
 
-            implementation 'com.squareup.retrofit2:retrofit:2.5.0'
-            implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
-            implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
+    implementation 'com.jakewharton:butterknife:10.1.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
 
-            implementation 'com.github.bumptech.glide:glide:4.9.0'
-            annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
 
-            implementation 'de.hdodenhof:circleimageview:3.0.0'
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
 
 
-        }
+}

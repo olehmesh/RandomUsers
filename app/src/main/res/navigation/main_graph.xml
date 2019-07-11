@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main_graph"
+        app:startDestination="@id/fragment_main"
+        tools:ignore="UnusedNavigation">
+
+    <fragment
+            android:id="@+id/fragment_main"
+            android:name="com.olehmesh.randomusers_task.views.MainFragment"
+            android:label="fragment_main"
+            tools:layout="@layout/fragment_main"/>
+
+    <fragment
+            android:id="@+id/fragment_detail"
+            android:name="com.olehmesh.randomusers_task.views.DetailFragment"
+            android:label="fragment_detail"
+            tools:layout="@layout/fragment_detail"/>
+
+
+    <fragment
+            android:id="@+id/fragment_saved"
+            android:name="com.olehmesh.randomusers_task.views.SavedFragment"
+            android:label="fragment_saved"
+            tools:layout="@layout/fragment_saved"/>
+
+
+</navigation>

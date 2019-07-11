@@ -12,7 +12,7 @@ import com.olehmesh.randomusers_task.models.Result;
 
 public class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-    OnItemClickListener onItemClickListener;
+    private OnItemClickListener onItemClickListener;
 
     Result list;
 
@@ -32,7 +32,7 @@ public class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnCl
 
 
     public interface OnItemClickListener {
-        void onClick(View view, int position, boolean isLongClick);
+        void onClick(View view, int position);
     }
 
     public void setOnItemClickListener(OnItemClickListener itemClickListener) {
@@ -42,6 +42,6 @@ public class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnCl
 
     @Override
     public void onClick(View view) {
-        onItemClickListener.onClick(view, getAdapterPosition(), false);
+        onItemClickListener.onClick(view, getAdapterPosition());
     }
 }

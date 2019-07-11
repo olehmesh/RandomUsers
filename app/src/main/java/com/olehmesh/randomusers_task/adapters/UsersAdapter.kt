@@ -1,19 +1,24 @@
 package com.olehmesh.randomusers_task.adapters
 
-import android.content.Intent
+import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
+import com.olehmesh.randomusers_task.Constants
 import com.olehmesh.randomusers_task.R
 import com.olehmesh.randomusers_task.models.Result
-import com.olehmesh.randomusers_task.views.DetailActivity
+
 
 class UsersAdapter(var mlist: List<Result>?) : RecyclerView.Adapter<ItemViewHolder>() {
 
-    lateinit var intent: Intent
+    var context: Context? = null
+    private lateinit var navController: NavController
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
 
@@ -31,26 +36,24 @@ class UsersAdapter(var mlist: List<Result>?) : RecyclerView.Adapter<ItemViewHold
         Glide.with(itemViewHolder.itemView.context)
             .asBitmap()
             .load(mlist!![i].picture!!.large)
-            .apply(
-                RequestOptions()
-                    .override(Target.SIZE_ORIGINAL).encodeQuality(100)
-            )
+            .apply(RequestOptions().override(Target.SIZE_ORIGINAL).encodeQuality(100))
             .placeholder(R.drawable.placeholder)
             .error(R.drawable.placeholder)
             .into(itemViewHolder.ivAvatar)
 
-        itemViewHolder.setOnItemClickListener { view, position, isLongClick ->
+        itemViewHolder.setOnItemClickListener { view, position ->
 
-            intent = Intent(view.context, DetailActivity::class.java)
-            intent.putExtra(R.string.name.toString(), mlist!![i].name!!.first)
-            intent.putExtra(R.string.city.toString(), mlist!![i].location!!.city)
+            navController = Navigation.findNavController(view)
 
-            intent.putExtra(R.string.image.toString(), mlist!![position].picture!!.large)
+            val bundle = Bundle()
 
-            intent.putExtra(R.string.email.toString(), mlist!![position].email)
-            intent.putExtra(R.string.phone.toString(), mlist!![position].phone)
+            bundle.putString(Constants.NAME, mlist!![i].name!!.first)
+            bundle.putString(Constants.CITY, mlist!![i].location!!.city)
+            bundle.putString(Constants.IMAGE, mlist!![position].picture!!.large)
+            bundle.putString(Constants.EMAIL, mlist!![position].email)
+            bundle.putString(Constants.PHONE, mlist!![position].phone)
 
-            view.context.startActivity(intent)
+            navController.navigate(R.id.fragment_detail, bundle)
 
         }
 
