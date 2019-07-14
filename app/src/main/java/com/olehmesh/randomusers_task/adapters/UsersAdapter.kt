@@ -22,7 +22,7 @@ class UsersAdapter(var mlist: List<Result>?) : RecyclerView.Adapter<ItemViewHold
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
 
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.main_list_item, parent, false)
 
         return ItemViewHolder(v)
     }
@@ -47,8 +47,8 @@ class UsersAdapter(var mlist: List<Result>?) : RecyclerView.Adapter<ItemViewHold
 
             val bundle = Bundle()
 
-            bundle.putString(Constants.NAME, mlist!![i].name!!.first)
-            bundle.putString(Constants.CITY, mlist!![i].location!!.city)
+            bundle.putString(Constants.NAME, mlist!![position].name!!.first)
+            bundle.putString(Constants.CITY, mlist!![position].location!!.city)
             bundle.putString(Constants.IMAGE, mlist!![position].picture!!.large)
             bundle.putString(Constants.EMAIL, mlist!![position].email)
             bundle.putString(Constants.PHONE, mlist!![position].phone)

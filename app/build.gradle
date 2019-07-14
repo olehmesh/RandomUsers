@@ -48,6 +48,10 @@ dependencies {
     //   compileOnly 'com.arello-mobile:moxy-compiler:1.5.5'
     //   kapt 'com.arello-mobile:moxy-compiler:1.5.5'
 
+
+    implementation "android.arch.persistence.room:runtime:1.1.1"
+    annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
+
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'

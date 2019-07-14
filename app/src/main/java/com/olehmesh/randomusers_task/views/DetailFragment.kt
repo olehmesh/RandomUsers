@@ -5,12 +5,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.olehmesh.randomusers_task.Constants
 import com.olehmesh.randomusers_task.R
+import com.olehmesh.randomusers_task.database.DB
+import com.olehmesh.randomusers_task.database.EntityData
 import kotlinx.android.synthetic.main.fragment_detail.*
+
 
 class DetailFragment : Fragment() {
 
@@ -33,6 +37,36 @@ class DetailFragment : Fragment() {
         tvDetailEmail!!.text = "E-mail: " + arguments!!.getString(Constants.EMAIL)
         tvDetailPhone!!.text = "Phone: " + arguments!!.getString(Constants.PHONE)
 
+
+        btnSave.setOnClickListener {
+
+            val db = DB.getDatabase(context)
+            val daoMethods = db.daoMethods()
+
+            val entityDatabase = EntityData()
+
+            entityDatabase.name = tvDetailName!!.text as String
+            entityDatabase.city = tvDetailCity!!.text as String
+
+            daoMethods.insert(entityDatabase)
+
+            Toast.makeText(context, "Successfully added", Toast.LENGTH_SHORT).show()
+
+        }
+
+
+
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+

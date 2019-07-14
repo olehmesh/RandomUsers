@@ -14,17 +14,15 @@ import com.olehmesh.randomusers_task.common.UsersContract
 import com.olehmesh.randomusers_task.models.Result
 import com.olehmesh.randomusers_task.presenters.UsersPresenter
 import kotlinx.android.synthetic.main.fragment_main.*
-import kotlinx.android.synthetic.main.fragment_main.view.*
 
 class MainFragment : Fragment(), UsersContract.View {
 
-    var root: View? = null
     var list: List<Result>? = null
     private lateinit var adapter: UsersAdapter
     private lateinit var mPresenter: UsersContract.Presenter
-    private lateinit var recyclerView: RecyclerView
 
     override fun init() {
+
         mPresenter.loadUsers()
     }
 
@@ -36,18 +34,32 @@ class MainFragment : Fragment(), UsersContract.View {
         progressBar.visibility = View.INVISIBLE
     }
 
-    override fun showError(message: String?) {
+    override fun showError(message: String) {
         Toast.makeText(activity, "No Internet Connection", Toast.LENGTH_SHORT).show();
     }
 
-    override fun loadDataInList(users: List<Result>?) {
+    override fun loadDataInList(users: List<Result>) {
         adapter = UsersAdapter(list)
 
-        if (users != null) {
-            adapter.setData(users)
-        }
-        recyclerView = view!!.findViewById(R.id.recyclerView) as RecyclerView
+        adapter.setData(users)
+
         recyclerView.adapter = adapter
+
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
+        mPresenter = UsersPresenter(this)
+        mPresenter.start()
+
+        return inflater.inflate(R.layout.fragment_main, container, false)
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        recyclerView.layoutManager = LinearLayoutManager(context)
 
         recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
@@ -66,39 +78,10 @@ class MainFragment : Fragment(), UsersContract.View {
             }
         })
 
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        mPresenter = UsersPresenter(this)
-        mPresenter.start()
-
-    }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
-        root = inflater.inflate(R.layout.fragment_main, container, false)
-
-        return root
-
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        root!!.recyclerView.layoutManager = LinearLayoutManager(context)
-
         fab.setOnClickListener {
             mPresenter.onRefreshButtonClick()
             mPresenter.loadUsers()
 
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        mPresenter.loadUsers()
-
     }
 }
