@@ -35,7 +35,7 @@ class MainFragment : Fragment(), UsersContract.View {
     }
 
     override fun showError(message: String) {
-        Toast.makeText(activity, "No Internet Connection", Toast.LENGTH_SHORT).show();
+        Toast.makeText(activity, "No Internet Connection", Toast.LENGTH_SHORT).show()
     }
 
     override fun loadDataInList(users: List<Result>) {

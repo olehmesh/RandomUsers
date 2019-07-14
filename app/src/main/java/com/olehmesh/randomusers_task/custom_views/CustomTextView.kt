@@ -2,7 +2,9 @@ package com.olehmesh.randomusers_task.custom_views
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import androidx.appcompat.widget.AppCompatTextView
+import com.olehmesh.randomusers_task.Constants
 
 class CustomTextView(context: Context, attrs: AttributeSet) : AppCompatTextView(context, attrs) {
 
@@ -20,7 +22,7 @@ class CustomTextView(context: Context, attrs: AttributeSet) : AppCompatTextView(
                 }
             }
         } catch (e: Exception) {
-            // String did not have more than + 2 characters after space.
+            Log.d(Constants.TAG, "UpperCase CustomTextView Exception")
         }
 
         super.setText(cap, type)

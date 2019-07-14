@@ -1,6 +1,6 @@
 package com.olehmesh.randomusers_task.views
 
-
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +15,6 @@ import com.olehmesh.randomusers_task.database.DB
 import com.olehmesh.randomusers_task.database.EntityData
 import kotlinx.android.synthetic.main.fragment_detail.*
 
-
 class DetailFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -23,6 +22,7 @@ class DetailFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_detail, container, false)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
@@ -53,11 +53,7 @@ class DetailFragment : Fragment() {
             Toast.makeText(context, "Successfully added", Toast.LENGTH_SHORT).show()
 
         }
-
-
-
     }
-
 }
 
 

@@ -9,6 +9,7 @@ class Constants {
         const val BASE_URL = "https://randomuser.me/"
         const val GET_API = "api/?inc=name,location,picture,phone,email"
 
+        const val TAG = "rand_users_debug"
 
         const val NAME = "name"
         const val CITY = "city"

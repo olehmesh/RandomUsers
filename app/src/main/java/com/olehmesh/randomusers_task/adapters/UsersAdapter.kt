@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.NavController
+import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -13,7 +14,6 @@ import com.bumptech.glide.request.target.Target
 import com.olehmesh.randomusers_task.Constants
 import com.olehmesh.randomusers_task.R
 import com.olehmesh.randomusers_task.models.Result
-
 
 class UsersAdapter(var mlist: List<Result>?) : RecyclerView.Adapter<ItemViewHolder>() {
 
@@ -44,6 +44,13 @@ class UsersAdapter(var mlist: List<Result>?) : RecyclerView.Adapter<ItemViewHold
         itemViewHolder.setOnItemClickListener { view, position ->
 
             navController = Navigation.findNavController(view)
+            val builder = NavOptions.Builder()
+            val navOptions = builder
+                .setEnterAnim(R.anim.slide_in_right)
+                .setExitAnim(R.anim.slide_out_right)
+                .setPopEnterAnim(R.anim.slide_in_left)
+                .setPopExitAnim(R.anim.slide_out_left)
+                .build()
 
             val bundle = Bundle()
 
@@ -53,7 +60,7 @@ class UsersAdapter(var mlist: List<Result>?) : RecyclerView.Adapter<ItemViewHold
             bundle.putString(Constants.EMAIL, mlist!![position].email)
             bundle.putString(Constants.PHONE, mlist!![position].phone)
 
-            navController.navigate(R.id.fragment_detail, bundle)
+            navController.navigate(R.id.fragment_detail, bundle, navOptions)
 
         }
 
