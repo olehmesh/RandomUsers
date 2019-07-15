@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.google.android.material.bottomappbar.BottomAppBar
 import com.olehmesh.randomusers_task.Constants
 import com.olehmesh.randomusers_task.R
 import com.olehmesh.randomusers_task.database.DB
@@ -38,7 +39,9 @@ class DetailFragment : Fragment() {
         tvDetailPhone!!.text = "Phone: " + arguments!!.getString(Constants.PHONE)
 
 
-        btnSave.setOnClickListener {
+        fab_bottom.setOnClickListener {
+
+            bottom_app_bar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
 
             val db = DB.getDatabase(context)
             val daoMethods = db.daoMethods()
@@ -50,10 +53,13 @@ class DetailFragment : Fragment() {
 
             daoMethods.insert(entityDatabase)
 
-            Toast.makeText(context, "Successfully added", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Successfully added", Toast.LENGTH_LONG).show()
+            fab_bottom.visibility = View.INVISIBLE
 
         }
+
     }
+
 }
 
 
