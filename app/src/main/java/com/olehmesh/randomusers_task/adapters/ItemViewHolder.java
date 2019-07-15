@@ -18,8 +18,10 @@ public class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnCl
 
     @BindView(R.id.tvFirstName)
     CustomTextView tvName;
+
     @BindView(R.id.tvCity)
     CustomTextView tvCity;
+
     @BindView(R.id.ivAvatar)
     ImageView ivAvatar;
 

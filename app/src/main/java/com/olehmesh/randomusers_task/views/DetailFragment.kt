@@ -50,6 +50,7 @@ class DetailFragment : Fragment() {
 
             entityDatabase.name = tvDetailName!!.text as String
             entityDatabase.city = tvDetailCity!!.text as String
+            entityDatabase.image = arguments!!.getString(Constants.IMAGE)
 
             daoMethods.insert(entityDatabase)
 

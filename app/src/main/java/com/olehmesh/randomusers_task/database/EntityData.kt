@@ -12,4 +12,5 @@ class EntityData {
 
     var name: String? = null
     var city: String? = null
+    var image: String? = null
 }
