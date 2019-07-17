@@ -46,13 +46,14 @@ class DetailFragment : Fragment() {
             val db = DB.getDatabase(context)
             val daoMethods = db.daoMethods()
 
-            val entityDatabase = EntityData()
+            val entityData = EntityData()
 
-            entityDatabase.name = tvDetailName!!.text as String
-            entityDatabase.city = tvDetailCity!!.text as String
-            entityDatabase.image = arguments!!.getString(Constants.IMAGE)
+            entityData.name = tvDetailName!!.text as String
+            entityData.city = tvDetailCity!!.text as String
+            entityData.image = arguments!!.getString(Constants.IMAGE)
 
-            daoMethods.insert(entityDatabase)
+            daoMethods.insert(entityData)
+
 
             Toast.makeText(context, "Successfully added", Toast.LENGTH_LONG).show()
             fab_bottom.visibility = View.INVISIBLE
