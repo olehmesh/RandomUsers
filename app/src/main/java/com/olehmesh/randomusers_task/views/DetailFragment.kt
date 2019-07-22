@@ -42,7 +42,6 @@ class DetailFragment : Fragment() {
         fab_bottom.setOnClickListener {
 
             bottom_app_bar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
-
             val db = DB.getDatabase(context)
             val daoMethods = db.daoMethods()
 
@@ -54,15 +53,16 @@ class DetailFragment : Fragment() {
 
             daoMethods.insert(entityData)
 
-
-            Toast.makeText(context, "Successfully added", Toast.LENGTH_LONG).show()
             fab_bottom.visibility = View.INVISIBLE
+
+            Toast.makeText(context, "Successfully added", Toast.LENGTH_SHORT).show()
 
         }
 
     }
 
 }
+
 
 
 
