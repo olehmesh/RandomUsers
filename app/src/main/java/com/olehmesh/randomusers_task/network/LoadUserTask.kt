@@ -19,12 +19,12 @@ object LoadUserTask {
             .subscribe(object : DisposableSingleObserver<ApiResponse>() {
 
                 override fun onSuccess(apiResponse: ApiResponse) {
-                    val mlist = apiResponse.results
-                    callback.returnResult(mlist)
+                    val mList = apiResponse.results
+                    mList?.let { callback.returnResult(it) }
                 }
 
                 override fun onError(e: Throwable) {
-                    callback.returnError(e.message)
+                    e.message?.let { callback.returnError(it) }
 
                 }
 

@@ -24,12 +24,9 @@ object RetrofitInstance {
 
                 iRandUsers = retrofit!!.create(IRandUsers::class.java)
 
-
             }
 
-
             return iRandUsers
-
-
         }
+
 }
