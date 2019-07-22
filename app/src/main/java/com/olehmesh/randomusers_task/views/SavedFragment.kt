@@ -13,7 +13,8 @@ import com.olehmesh.randomusers_task.database.DatabaseManager
 import com.olehmesh.randomusers_task.models.EntityData
 import kotlinx.android.synthetic.main.fragment_saved.*
 
-class SavedFragment : Fragment() {
+
+class SavedFragment : Fragment(), SavedAdapter.OnDeleteListener {
 
     private var databaseManager: DatabaseManager? = null
 
@@ -35,7 +36,13 @@ class SavedFragment : Fragment() {
         super.onResume()
 
         val recyclerAdapter = SavedAdapter(databaseManager?.daoMethods()?.all as MutableList<EntityData>)
+        recyclerAdapter.setOnDeleteListener(this)
         recyclerViewSaved.adapter = recyclerAdapter
+
+    }
+
+    override fun onDelete(entityDatabase: EntityData) {
+        databaseManager?.daoMethods()?.delete(entityDatabase)
     }
 
 }

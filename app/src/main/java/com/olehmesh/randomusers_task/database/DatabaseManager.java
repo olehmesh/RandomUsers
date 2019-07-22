@@ -11,3 +11,4 @@ public abstract class DatabaseManager extends RoomDatabase {
     public abstract DaoMethods daoMethods();
 
 }
+

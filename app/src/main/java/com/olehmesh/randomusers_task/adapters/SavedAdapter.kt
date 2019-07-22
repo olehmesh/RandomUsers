@@ -12,8 +12,10 @@ import com.olehmesh.randomusers_task.models.EntityData
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.saved_list_item.*
 
-class SavedAdapter(private val dbEntityModels: MutableList<EntityData>) :
+class SavedAdapter(private val dbEntity: MutableList<EntityData>) :
     RecyclerView.Adapter<SavedAdapter.SavedListHolder>() {
+
+    private var onDeleteListener: OnDeleteListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SavedListHolder {
 
@@ -24,13 +26,13 @@ class SavedAdapter(private val dbEntityModels: MutableList<EntityData>) :
 
     override fun onBindViewHolder(holder: SavedListHolder, position: Int) {
 
-        holder.bind(dbEntityModels[position])
+        holder.bind(dbEntity[position])
 
     }
 
     override fun getItemCount(): Int {
 
-        return dbEntityModels.size
+        return dbEntity.size
     }
 
     inner class SavedListHolder(itemView: View) : RecyclerView.ViewHolder(itemView), LayoutContainer {
@@ -51,10 +53,10 @@ class SavedAdapter(private val dbEntityModels: MutableList<EntityData>) :
                 .error(R.drawable.placeholder)
                 .into(ivSaved)
 
-
             delete.setOnClickListener {
 
-                dbEntityModels.removeAt(adapterPosition)
+                onDeleteListener!!.onDelete(dbEntity[adapterPosition])
+                dbEntity.removeAt(adapterPosition)
                 notifyItemRemoved(adapterPosition)
 
             }
@@ -63,5 +65,11 @@ class SavedAdapter(private val dbEntityModels: MutableList<EntityData>) :
 
     }
 
+    fun setOnDeleteListener(onDeleteListener: OnDeleteListener) {
+        this.onDeleteListener = onDeleteListener
+    }
 
+    interface OnDeleteListener {
+        fun onDelete(entityDatabase: EntityData)
+    }
 }
