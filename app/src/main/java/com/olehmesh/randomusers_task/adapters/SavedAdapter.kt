@@ -8,12 +8,12 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import com.olehmesh.randomusers_task.R
-import com.olehmesh.randomusers_task.database.EntityData
+import com.olehmesh.randomusers_task.models.EntityData
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.saved_list_item.*
 
-class AdapterSavedList(private val dbEntityModels: MutableList<EntityData>) :
-    RecyclerView.Adapter<AdapterSavedList.SavedListHolder>() {
+class SavedAdapter(private val dbEntityModels: MutableList<EntityData>) :
+    RecyclerView.Adapter<SavedAdapter.SavedListHolder>() {
 
     private var onDeleteListener: OnDeleteListener? = null
 

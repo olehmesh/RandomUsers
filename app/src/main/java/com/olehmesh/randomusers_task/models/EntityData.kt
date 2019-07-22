@@ -1,5 +1,4 @@
-package com.olehmesh.randomusers_task.database
-
+package com.olehmesh.randomusers_task.models
 
 import androidx.room.Entity
 import androidx.room.Index

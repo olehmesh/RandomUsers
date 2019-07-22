@@ -1,6 +1,7 @@
 package com.olehmesh.randomusers_task.database
 
 import androidx.room.*
+import com.olehmesh.randomusers_task.models.EntityData
 
 @Dao
 interface DaoMethods {

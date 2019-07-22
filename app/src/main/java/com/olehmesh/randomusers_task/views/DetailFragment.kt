@@ -13,7 +13,7 @@ import com.google.android.material.bottomappbar.BottomAppBar
 import com.olehmesh.randomusers_task.Constants
 import com.olehmesh.randomusers_task.R
 import com.olehmesh.randomusers_task.database.DB
-import com.olehmesh.randomusers_task.database.EntityData
+import com.olehmesh.randomusers_task.models.EntityData
 import kotlinx.android.synthetic.main.fragment_detail.*
 
 class DetailFragment : Fragment() {
