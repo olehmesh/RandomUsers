@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'androidx.navigation.safeargs'
-//apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-kapt'
 
 
 android {
@@ -50,7 +50,7 @@ dependencies {
     kapt "com.arello-mobile:moxy-compiler:$moxyVersion"
 */
     implementation "android.arch.persistence.room:runtime:1.1.1"
-    annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
+    kapt "android.arch.persistence.room:compiler:1.1.1"
 
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'androidx.appcompat:appcompat:1.0.2'

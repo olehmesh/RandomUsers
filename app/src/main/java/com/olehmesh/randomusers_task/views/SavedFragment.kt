@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.olehmesh.randomusers_task.R
 import com.olehmesh.randomusers_task.adapters.SavedAdapter
-import com.olehmesh.randomusers_task.database.DB
 import com.olehmesh.randomusers_task.database.DatabaseManager
 import com.olehmesh.randomusers_task.models.EntityData
 import kotlinx.android.synthetic.main.fragment_saved.*
@@ -20,7 +19,7 @@ class SavedFragment : Fragment(), SavedAdapter.OnDeleteListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        databaseManager = DB.getDatabase(context)
+        databaseManager = DatabaseManager.getDatabase(context)
 
         return inflater.inflate(R.layout.fragment_saved, container, false)
     }

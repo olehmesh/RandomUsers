@@ -12,7 +12,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.olehmesh.randomusers_task.Constants
 import com.olehmesh.randomusers_task.R
-import com.olehmesh.randomusers_task.database.DB
+import com.olehmesh.randomusers_task.database.DatabaseManager
 import com.olehmesh.randomusers_task.models.EntityData
 import kotlinx.android.synthetic.main.fragment_detail.*
 
@@ -42,8 +42,8 @@ class DetailFragment : Fragment() {
         fab_bottom.setOnClickListener {
 
             bottom_app_bar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
-            val db = DB.getDatabase(context)
-            val daoMethods = db.daoMethods()
+            val db = DatabaseManager.getDatabase(context)
+            val daoMethods = db?.daoMethods()
 
             val entityData = EntityData()
 
@@ -51,7 +51,7 @@ class DetailFragment : Fragment() {
             entityData.city = tvDetailCity!!.text as String
             entityData.image = arguments!!.getString(Constants.IMAGE)
 
-            daoMethods.insert(entityData)
+            daoMethods?.insert(entityData)
 
             fab_bottom.visibility = View.INVISIBLE
 
