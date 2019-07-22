@@ -15,8 +15,6 @@ import kotlinx.android.synthetic.main.saved_list_item.*
 class SavedAdapter(private val dbEntityModels: MutableList<EntityData>) :
     RecyclerView.Adapter<SavedAdapter.SavedListHolder>() {
 
-    private var onDeleteListener: OnDeleteListener? = null
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SavedListHolder {
 
         val view = LayoutInflater.from(parent.context).inflate(R.layout.saved_list_item, parent, false)
@@ -55,20 +53,15 @@ class SavedAdapter(private val dbEntityModels: MutableList<EntityData>) :
 
 
             delete.setOnClickListener {
-                onDeleteListener!!.onDelete(dbEntityModels[adapterPosition])
+
                 dbEntityModels.removeAt(adapterPosition)
                 notifyItemRemoved(adapterPosition)
+
             }
 
         }
 
     }
 
-    fun setOnDeleteListener(onDeleteListener: OnDeleteListener) {
-        this.onDeleteListener = onDeleteListener
-    }
 
-    interface OnDeleteListener {
-        fun onDelete(entityDatabase: EntityData)
-    }
 }
