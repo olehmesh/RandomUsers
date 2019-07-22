@@ -34,7 +34,7 @@ class SavedFragment : Fragment(), AdapterSavedList.OnDeleteListener {
 
     override fun onResume() {
         super.onResume()
-        val recyclerAdapter = AdapterSavedList(context, databaseManager?.daoMethods()?.all)
+        val recyclerAdapter = AdapterSavedList(databaseManager?.daoMethods()?.all as MutableList<EntityData>)
         recyclerAdapter.setOnDeleteListener(this)
 
         recyclerViewSaved.adapter = recyclerAdapter
