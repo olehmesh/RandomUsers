@@ -17,9 +17,10 @@ import com.olehmesh.randomusers_task.models.Result
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.main_list_item.*
 
-class UsersAdapter(var mlist: List<Result>?) : RecyclerView.Adapter<UsersAdapter.ItemViewHolder>() {
+class UsersAdapter : RecyclerView.Adapter<UsersAdapter.ItemViewHolder>() {
 
     private lateinit var navController: NavController
+    private lateinit var mList: List<Result>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
 
@@ -30,7 +31,7 @@ class UsersAdapter(var mlist: List<Result>?) : RecyclerView.Adapter<UsersAdapter
 
     override fun onBindViewHolder(itemViewHolder: ItemViewHolder, i: Int) {
 
-        itemViewHolder.bind(mlist!![i])
+        itemViewHolder.bind(mList[i])
 
         itemViewHolder.itemView.setOnClickListener {
 
@@ -45,11 +46,11 @@ class UsersAdapter(var mlist: List<Result>?) : RecyclerView.Adapter<UsersAdapter
 
             val bundle = Bundle()
 
-            bundle.putString(Constants.NAME, mlist!![i].name!!.first)
-            bundle.putString(Constants.CITY, mlist!![i].location!!.city)
-            bundle.putString(Constants.IMAGE, mlist!![i].picture!!.large)
-            bundle.putString(Constants.EMAIL, mlist!![i].email)
-            bundle.putString(Constants.PHONE, mlist!![i].phone)
+            bundle.putString(Constants.NAME, mList[i].name!!.first)
+            bundle.putString(Constants.CITY, mList[i].location!!.city)
+            bundle.putString(Constants.IMAGE, mList[i].picture!!.large)
+            bundle.putString(Constants.EMAIL, mList[i].email)
+            bundle.putString(Constants.PHONE, mList[i].phone)
 
             navController.navigate(R.id.fragment_detail, bundle, navOptions)
 
@@ -58,13 +59,11 @@ class UsersAdapter(var mlist: List<Result>?) : RecyclerView.Adapter<UsersAdapter
     }
 
     override fun getItemCount(): Int {
-        return if (mlist == null) {
-            0
-        } else mlist!!.size
+        return mList.count()
     }
 
     fun setData(mList: List<Result>) {
-        this.mlist = mList
+        this.mList = mList
         notifyDataSetChanged()
     }
 

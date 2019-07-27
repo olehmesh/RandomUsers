@@ -8,12 +8,13 @@ import com.olehmesh.randomusers_task.models.EntityData
 
 
 @Database(entities = [EntityData::class], version = 1, exportSchema = false)
+
 abstract class DatabaseManager : RoomDatabase() {
 
     abstract fun daoMethods(): DaoMethods
 
     companion object {
-
+        @Volatile
         private var DB_INSTANCE: DatabaseManager? = null
 
         fun getDatabase(context: Context?): DatabaseManager? {

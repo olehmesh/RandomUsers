@@ -1,34 +1,41 @@
 package com.olehmesh.randomusers_task.presenters
 
+import com.arellomobile.mvp.InjectViewState
+import com.arellomobile.mvp.MvpPresenter
 import com.olehmesh.randomusers_task.common.Callback
-import com.olehmesh.randomusers_task.common.UsersContract
+import com.olehmesh.randomusers_task.common.ContractView
 import com.olehmesh.randomusers_task.models.Result
 import com.olehmesh.randomusers_task.network.LoadUserTask
 
-class UsersPresenter(var mView: UsersContract.View) : UsersContract.Presenter {
+@InjectViewState
+class UsersPresenter : MvpPresenter<ContractView>() {
 
-    override fun loadUsers() {
+    fun loadUsers() {
 
         LoadUserTask.getUsers(object : Callback<List<Result>>() {
 
-            override fun returnResult(users: List<Result>) {
-                mView.loadDataInList(users)
-                mView.hideProgress()
+            override fun returnResult(t: List<Result>) {
 
+                viewState.loadDataInList(t)
+                viewState.hideProgress()
             }
 
             override fun returnError(message: String) {
-                mView.showError(message)
+
+                viewState.showError(message)
+
             }
         })
     }
 
-    override fun onRefreshButtonClick() {
-        mView.showProgress()
+    fun onRefreshButtonClick() {
+
+        viewState.showProgress()
     }
 
-    override fun start() {
-        mView.init()
+    fun start() {
+
+        viewState.init()
     }
 
 }

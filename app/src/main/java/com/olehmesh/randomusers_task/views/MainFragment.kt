@@ -5,33 +5,47 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.arellomobile.mvp.MvpAppCompatFragment
+import com.arellomobile.mvp.presenter.InjectPresenter
+import com.arellomobile.mvp.presenter.ProvidePresenter
+import com.arellomobile.mvp.presenter.ProvidePresenterTag
 import com.olehmesh.randomusers_task.R
 import com.olehmesh.randomusers_task.adapters.UsersAdapter
-import com.olehmesh.randomusers_task.common.UsersContract
+import com.olehmesh.randomusers_task.common.ContractView
+
 import com.olehmesh.randomusers_task.models.Result
 import com.olehmesh.randomusers_task.presenters.UsersPresenter
 import kotlinx.android.synthetic.main.fragment_main.*
 
-class MainFragment : Fragment(), UsersContract.View {
+class MainFragment : MvpAppCompatFragment(), ContractView {
 
-    var list: List<Result>? = null
-    private lateinit var adapter: UsersAdapter
-    private lateinit var mPresenter: UsersContract.Presenter
+    private var adapter = UsersAdapter()
+
+    @InjectPresenter
+    lateinit var mPresenter: UsersPresenter
+
+    @ProvidePresenterTag(presenterClass = UsersPresenter::class)
+    fun mPresenter() = UsersPresenter()
+
+    @ProvidePresenter
+    fun providePresenter() = UsersPresenter()
 
     override fun init() {
-
+        fab.visibility = View.INVISIBLE
         mPresenter.loadUsers()
+
     }
 
     override fun showProgress() {
         progressBar.visibility = View.VISIBLE
+
     }
 
     override fun hideProgress() {
         progressBar.visibility = View.INVISIBLE
+        fab.visibility = View.VISIBLE
     }
 
     override fun showError(message: String) {
@@ -39,17 +53,15 @@ class MainFragment : Fragment(), UsersContract.View {
     }
 
     override fun loadDataInList(users: List<Result>) {
-        adapter = UsersAdapter(list)
 
-        adapter.setData(users)
-
+        recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = adapter
+        adapter.setData(users)
 
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        mPresenter = UsersPresenter(this)
         mPresenter.start()
 
         return inflater.inflate(R.layout.fragment_main, container, false)
@@ -59,7 +71,6 @@ class MainFragment : Fragment(), UsersContract.View {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        recyclerView.layoutManager = LinearLayoutManager(context)
 
         recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
@@ -84,4 +95,5 @@ class MainFragment : Fragment(), UsersContract.View {
 
         }
     }
+
 }
