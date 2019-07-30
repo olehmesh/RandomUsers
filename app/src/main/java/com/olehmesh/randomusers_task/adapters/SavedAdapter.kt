@@ -32,7 +32,7 @@ class SavedAdapter(private val dbEntity: MutableList<EntityData>) :
 
     override fun getItemCount(): Int {
 
-        return dbEntity.size
+        return dbEntity.count()
     }
 
     inner class SavedListHolder(itemView: View) : RecyclerView.ViewHolder(itemView), LayoutContainer {
