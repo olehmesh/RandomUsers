@@ -8,7 +8,7 @@
         android:layout_margin="8dp"
         app:cardBackgroundColor="@color/cardview_light_background"
         app:cardCornerRadius="10dp"
-        app:elevation="4dp">
+        app:elevation="4dp" tools:ignore="PrivateResource">
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -30,6 +30,7 @@
                 android:id="@+id/tvFirstName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/font_round"
                 android:layout_marginStart="8dp"
                 android:textSize="28sp"
                 app:layout_constraintStart_toEndOf="@+id/ivAvatar"
@@ -44,6 +45,7 @@
                 android:id="@+id/tvCity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/font_round"
                 android:layout_marginStart="8dp"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
