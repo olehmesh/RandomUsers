@@ -32,7 +32,6 @@ class UsersAdapter : RecyclerView.Adapter<UsersAdapter.ItemViewHolder>() {
     override fun onBindViewHolder(itemViewHolder: ItemViewHolder, i: Int) {
 
         itemViewHolder.bind(mList[i])
-
         itemViewHolder.itemView.setOnClickListener {
 
             navController = Navigation.findNavController(itemViewHolder.itemView)
@@ -64,6 +63,7 @@ class UsersAdapter : RecyclerView.Adapter<UsersAdapter.ItemViewHolder>() {
 
     fun setData(mList: List<Result>) {
         this.mList = mList
+
         notifyDataSetChanged()
     }
 
@@ -79,7 +79,6 @@ class UsersAdapter : RecyclerView.Adapter<UsersAdapter.ItemViewHolder>() {
             tvCity.text = item.location!!.city
 
             Glide.with(itemView.context)
-                .asBitmap()
                 .load(item.picture!!.large)
                 .apply(RequestOptions().override(Target.SIZE_ORIGINAL).encodeQuality(100))
                 .placeholder(R.drawable.placeholder)

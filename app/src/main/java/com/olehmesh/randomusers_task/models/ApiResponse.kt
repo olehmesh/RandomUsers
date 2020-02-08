@@ -8,8 +8,5 @@ class ApiResponse {
     @SerializedName("results")
     @Expose
     var results: List<Result>? = null
-    @SerializedName("info")
-    @Expose
-    var info: Info? = null
 
 }

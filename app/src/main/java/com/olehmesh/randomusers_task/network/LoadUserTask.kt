@@ -1,5 +1,6 @@
 package com.olehmesh.randomusers_task.network
 
+import android.util.Log
 import com.olehmesh.randomusers_task.Constants
 import com.olehmesh.randomusers_task.common.Callback
 import com.olehmesh.randomusers_task.models.ApiResponse
@@ -21,9 +22,11 @@ object LoadUserTask {
                 override fun onSuccess(apiResponse: ApiResponse) {
                     val mList = apiResponse.results
                     mList?.let { callback.returnResult(it) }
+
                 }
 
                 override fun onError(e: Throwable) {
+                    Log.d("TAG", "onError: $e")
                     e.message?.let { callback.returnError(it) }
 
                 }

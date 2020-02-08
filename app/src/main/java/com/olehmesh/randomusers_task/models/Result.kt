@@ -5,9 +5,6 @@ import com.google.gson.annotations.SerializedName
 
 class Result {
 
-    @SerializedName("gender")
-    @Expose
-    var gender: String? = null
     @SerializedName("name")
     @Expose
     var name: Name? = null
@@ -17,29 +14,11 @@ class Result {
     @SerializedName("email")
     @Expose
     var email: String? = null
-    @SerializedName("login")
-    @Expose
-    var login: Login? = null
-    @SerializedName("dob")
-    @Expose
-    var dob: String? = null
-    @SerializedName("registered")
-    @Expose
-    var registered: String? = null
     @SerializedName("phone")
     @Expose
     var phone: String? = null
-    @SerializedName("cell")
-    @Expose
-    var cell: String? = null
-    @SerializedName("id")
-    @Expose
-    var id: Id? = null
     @SerializedName("picture")
     @Expose
     var picture: Picture? = null
-    @SerializedName("nat")
-    @Expose
-    var nat: String? = null
 
 }

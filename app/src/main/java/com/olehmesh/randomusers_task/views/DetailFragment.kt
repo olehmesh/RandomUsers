@@ -13,6 +13,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.google.android.material.bottomappbar.BottomAppBar
 import com.olehmesh.randomusers_task.Constants
 import com.olehmesh.randomusers_task.R
 import com.olehmesh.randomusers_task.database.DatabaseManager
@@ -46,7 +47,7 @@ class DetailFragment : Fragment() {
 
         fab_bottom.setOnClickListener {
 
-            fab_bottom.visibility = View.INVISIBLE
+            bottom_app_bar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
 
             val db = DatabaseManager.getDatabase(context)
             val daoMethods = db?.daoMethods()
@@ -61,12 +62,13 @@ class DetailFragment : Fragment() {
 
             Toast.makeText(context, "Successfully added", Toast.LENGTH_SHORT).show()
 
-            Handler().postDelayed({
+            fab_bottom.isEnabled = false
 
+            Handler().postDelayed({
                 navController = Navigation.findNavController(context as Activity, R.id.nav_host_fragment)
                 navController.navigate(R.id.fragment_main)
 
-            }, 4000)
+            }, 3000)
 
         }
 

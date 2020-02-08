@@ -14,7 +14,6 @@ import com.arellomobile.mvp.presenter.ProvidePresenterTag
 import com.olehmesh.randomusers_task.R
 import com.olehmesh.randomusers_task.adapters.UsersAdapter
 import com.olehmesh.randomusers_task.common.ContractView
-
 import com.olehmesh.randomusers_task.models.Result
 import com.olehmesh.randomusers_task.presenters.UsersPresenter
 import kotlinx.android.synthetic.main.fragment_main.*
@@ -50,12 +49,14 @@ class MainFragment : MvpAppCompatFragment(), ContractView {
 
     override fun showError(message: String) {
         Toast.makeText(activity, "No Internet Connection", Toast.LENGTH_SHORT).show()
+        hideProgress()
     }
 
     override fun loadDataInList(users: List<Result>) {
 
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = adapter
+
         adapter.setData(users)
 
     }
