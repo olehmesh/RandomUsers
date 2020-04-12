@@ -8,11 +8,11 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import com.olehmesh.randomusers_task.R
-import com.olehmesh.randomusers_task.models.EntityData
+import com.olehmesh.randomusers_task.database.entity.UserInfo
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.saved_list_item.*
 
-class SavedAdapter(private val dbEntity: MutableList<EntityData>) :
+class SavedAdapter(private val dbEntity: MutableList<UserInfo>) :
     RecyclerView.Adapter<SavedAdapter.SavedListHolder>() {
 
     private var onDeleteListener: OnDeleteListener? = null
@@ -40,7 +40,7 @@ class SavedAdapter(private val dbEntity: MutableList<EntityData>) :
         override val containerView: View?
             get() = itemView
 
-        fun bind(entity: EntityData) {
+        fun bind(entity: UserInfo) {
 
             savedName.text = entity.name
             savedCity.text = entity.city
@@ -70,6 +70,6 @@ class SavedAdapter(private val dbEntity: MutableList<EntityData>) :
     }
 
     interface OnDeleteListener {
-        fun onDelete(entityDatabase: EntityData)
+        fun onDelete(entityDatabase: UserInfo)
     }
 }

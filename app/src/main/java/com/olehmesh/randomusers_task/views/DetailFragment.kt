@@ -17,7 +17,8 @@ import com.google.android.material.bottomappbar.BottomAppBar
 import com.olehmesh.randomusers_task.Constants
 import com.olehmesh.randomusers_task.R
 import com.olehmesh.randomusers_task.database.DatabaseManager
-import com.olehmesh.randomusers_task.models.EntityData
+import com.olehmesh.randomusers_task.database.entity.DateCurrent
+import com.olehmesh.randomusers_task.database.entity.UserInfo
 import kotlinx.android.synthetic.main.fragment_detail.*
 
 class DetailFragment : Fragment() {
@@ -50,15 +51,18 @@ class DetailFragment : Fragment() {
             bottom_app_bar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
 
             val db = DatabaseManager.getDatabase(context)
-            val daoMethods = db?.daoMethods()
+            val daoUserAndDate = db?.daoUserAndDate()
 
-            val entityData = EntityData()
+            val userInfo = UserInfo()
+            val dateCurrent = DateCurrent()
 
-            entityData.name = tvDetailName!!.text as String
-            entityData.city = tvDetailCity!!.text as String
-            entityData.image = arguments!!.getString(Constants.IMAGE)
+            userInfo.name = tvDetailName!!.text as String
+            userInfo.city = tvDetailCity!!.text as String
+            userInfo.image = arguments!!.getString(Constants.IMAGE).toString()
 
-            daoMethods?.insert(entityData)
+            dateCurrent.dateCurrent = System.currentTimeMillis()
+
+            daoUserAndDate?.insertUserAndDate(userInfo, dateCurrent)
 
             Toast.makeText(context, "Successfully added", Toast.LENGTH_SHORT).show()
 

@@ -9,9 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.olehmesh.randomusers_task.R
 import com.olehmesh.randomusers_task.adapters.SavedAdapter
 import com.olehmesh.randomusers_task.database.DatabaseManager
-import com.olehmesh.randomusers_task.models.EntityData
+import com.olehmesh.randomusers_task.database.entity.UserInfo
 import kotlinx.android.synthetic.main.fragment_saved.*
-
 
 class SavedFragment : Fragment(), SavedAdapter.OnDeleteListener {
 
@@ -34,14 +33,28 @@ class SavedFragment : Fragment(), SavedAdapter.OnDeleteListener {
     override fun onResume() {
         super.onResume()
 
-        val recyclerAdapter = SavedAdapter(databaseManager?.daoMethods()?.all as MutableList<EntityData>)
+        // val entityLiveData: LiveData<MutableList<EntityData>> = databaseManager?.daoMethods()!!.all
+//entityLiveData.observeForever(Observer {  })
+
+        /*    val res = databaseManager?.daoMethods()?.all
+             ?.subscribeOn(Schedulers.io())
+             ?.observeOn(AndroidSchedulers.mainThread())
+             ?.subscribe {
+                 TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+             }
+
+
+         val recyclerAdapter = SavedAdapter(res)*/
+
+        val recyclerAdapter =
+            SavedAdapter(databaseManager?.daoUserInfo()?.all as MutableList<UserInfo>)
         recyclerAdapter.setOnDeleteListener(this)
         recyclerViewSaved.adapter = recyclerAdapter
 
     }
 
-    override fun onDelete(entityDatabase: EntityData) {
-        databaseManager?.daoMethods()?.delete(entityDatabase)
+    override fun onDelete(entityDatabase: UserInfo) {
+        databaseManager?.daoUserInfo()?.delete(entityDatabase)
     }
 
 }
