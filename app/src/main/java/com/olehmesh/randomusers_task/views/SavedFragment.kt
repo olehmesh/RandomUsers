@@ -1,6 +1,7 @@
 package com.olehmesh.randomusers_task.views
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,14 +10,20 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.olehmesh.randomusers_task.R
 import com.olehmesh.randomusers_task.adapters.SavedAdapter
 import com.olehmesh.randomusers_task.database.DatabaseManager
+import com.olehmesh.randomusers_task.database.dao.DateAndInfo
 import com.olehmesh.randomusers_task.database.entity.UserInfo
 import kotlinx.android.synthetic.main.fragment_saved.*
+
 
 class SavedFragment : Fragment(), SavedAdapter.OnDeleteListener {
 
     private var databaseManager: DatabaseManager? = null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
         databaseManager = DatabaseManager.getDatabase(context)
 
@@ -32,19 +39,10 @@ class SavedFragment : Fragment(), SavedAdapter.OnDeleteListener {
 
     override fun onResume() {
         super.onResume()
+        Log.d("TAG", databaseManager?.daoUserInfo()?.getDateAndInfo.toString())
+        //   val recyclerAdapter = SavedAdapter(databaseManager?.daoUserInfo()?.getDateAndInfo)
 
-        // val entityLiveData: LiveData<MutableList<EntityData>> = databaseManager?.daoMethods()!!.all
-//entityLiveData.observeForever(Observer {  })
-
-        /*    val res = databaseManager?.daoMethods()?.all
-             ?.subscribeOn(Schedulers.io())
-             ?.observeOn(AndroidSchedulers.mainThread())
-             ?.subscribe {
-                 TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-             }
-
-
-         val recyclerAdapter = SavedAdapter(res)*/
+        //  val adapter = SavedAdapter(mutableListOf())
 
         val recyclerAdapter =
             SavedAdapter(databaseManager?.daoUserInfo()?.all as MutableList<UserInfo>)
@@ -57,4 +55,8 @@ class SavedFragment : Fragment(), SavedAdapter.OnDeleteListener {
         databaseManager?.daoUserInfo()?.delete(entityDatabase)
     }
 
+
 }
+
+
+

@@ -14,13 +14,17 @@ import com.arellomobile.mvp.presenter.ProvidePresenterTag
 import com.olehmesh.randomusers_task.R
 import com.olehmesh.randomusers_task.adapters.UsersAdapter
 import com.olehmesh.randomusers_task.common.ContractView
+import com.olehmesh.randomusers_task.di.App
 import com.olehmesh.randomusers_task.models.Result
 import com.olehmesh.randomusers_task.presenters.UsersPresenter
 import kotlinx.android.synthetic.main.fragment_main.*
+import javax.inject.Inject
 
 class MainFragment : MvpAppCompatFragment(), ContractView {
 
-    private var adapter = UsersAdapter()
+
+    @Inject
+    lateinit var adapter: UsersAdapter
 
     @InjectPresenter
     lateinit var mPresenter: UsersPresenter
@@ -63,6 +67,7 @@ class MainFragment : MvpAppCompatFragment(), ContractView {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
+        App.component.inject(this)
         mPresenter.start()
 
         return inflater.inflate(R.layout.fragment_main, container, false)

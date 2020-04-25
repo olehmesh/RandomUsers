@@ -12,7 +12,7 @@ import com.olehmesh.randomusers_task.database.entity.UserInfo
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.saved_list_item.*
 
-class SavedAdapter(private val dbEntity: MutableList<UserInfo>) :
+class SavedAdapter(var dbEntity: MutableList<UserInfo>) :
     RecyclerView.Adapter<SavedAdapter.SavedListHolder>() {
 
     private var onDeleteListener: OnDeleteListener? = null
@@ -44,6 +44,9 @@ class SavedAdapter(private val dbEntity: MutableList<UserInfo>) :
 
             savedName.text = entity.name
             savedCity.text = entity.city
+
+            savedDate.text = entity.dateCurrent.toString()
+
 
             Glide.with(itemView.context)
                 .asBitmap()

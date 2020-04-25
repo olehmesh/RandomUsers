@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 
 
 @Entity(
-    tableName = "user_info",
+    tableName = "table_info",
     indices = [Index(value = ["name", "city", "image"], unique = true)]
 )
 class UserInfo {
@@ -15,9 +15,12 @@ class UserInfo {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     var id: Int = 0
-    lateinit var name: String
-    lateinit var city: String
-    lateinit var image: String
+    var name: String = ""
+    var city: String = ""
+    var image: String = ""
 
+
+    @ColumnInfo(name = "date_current")
+    var dateCurrent: Long = 0
 
 }
