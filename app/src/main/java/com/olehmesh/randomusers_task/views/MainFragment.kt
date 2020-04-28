@@ -22,7 +22,6 @@ import javax.inject.Inject
 
 class MainFragment : MvpAppCompatFragment(), ContractView {
 
-
     @Inject
     lateinit var adapter: UsersAdapter
 
