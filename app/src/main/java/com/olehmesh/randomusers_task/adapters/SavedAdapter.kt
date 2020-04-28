@@ -9,6 +9,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import com.olehmesh.randomusers_task.R
 import com.olehmesh.randomusers_task.database.entity.UserInfo
+import com.olehmesh.randomusers_task.databinding.SavedListItemBinding
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.saved_list_item.*
 
@@ -19,9 +20,10 @@ class SavedAdapter(var dbEntity: MutableList<UserInfo>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SavedListHolder {
 
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.saved_list_item, parent, false)
+        val inflater = LayoutInflater.from(parent.context)
+        val binding = SavedListItemBinding.inflate(inflater, parent, false)
 
-        return SavedListHolder(view)
+        return SavedListHolder(binding)
     }
 
     override fun onBindViewHolder(holder: SavedListHolder, position: Int) {
@@ -35,18 +37,16 @@ class SavedAdapter(var dbEntity: MutableList<UserInfo>) :
         return dbEntity.count()
     }
 
-    inner class SavedListHolder(itemView: View) : RecyclerView.ViewHolder(itemView), LayoutContainer {
+    inner class SavedListHolder(private val binding: SavedListItemBinding) :
+        RecyclerView.ViewHolder(binding.root), LayoutContainer {
 
         override val containerView: View?
             get() = itemView
 
         fun bind(entity: UserInfo) {
 
-            savedName.text = entity.name
-            savedCity.text = entity.city
-
-            savedDate.text = entity.dateCurrent.toString()
-
+            binding.userInfo = entity
+            binding.executePendingBindings()
 
             Glide.with(itemView.context)
                 .asBitmap()

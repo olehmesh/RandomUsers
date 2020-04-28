@@ -82,7 +82,7 @@ class DetailFragment : Fragment() {
                 Toast.makeText(context, "Successfully added", Toast.LENGTH_SHORT).show()
                 bottom_app_bar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
                 fab_bottom.isEnabled = false
-                delay(2300)
+                delay(2400)
                 navController =
                     Navigation.findNavController(context as Activity, R.id.nav_host_fragment)
                 navController.navigate(R.id.fragment_main)

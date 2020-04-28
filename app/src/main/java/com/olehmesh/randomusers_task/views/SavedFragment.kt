@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.olehmesh.randomusers_task.R
 import com.olehmesh.randomusers_task.adapters.SavedAdapter
 import com.olehmesh.randomusers_task.database.DatabaseManager
-import com.olehmesh.randomusers_task.database.dao.DateAndInfo
 import com.olehmesh.randomusers_task.database.entity.UserInfo
 import kotlinx.android.synthetic.main.fragment_saved.*
 

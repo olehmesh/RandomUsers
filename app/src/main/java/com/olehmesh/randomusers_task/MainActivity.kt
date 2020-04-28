@@ -1,6 +1,5 @@
 package com.olehmesh.randomusers_task
 
-import android.app.Activity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -10,10 +9,8 @@ import javax.inject.Inject
 
 class MainActivity : MvpAppCompatActivity() {
 
-    // private lateinit var navController: NavController
     @Inject
     lateinit var navHostFragment: NavHostFragment
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,9 +20,6 @@ class MainActivity : MvpAppCompatActivity() {
         navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navHostFragment.navController
-
-
-        //    navController = Navigation.findNavController(this, R.id.nav_host_fragment)
 
     }
 
@@ -41,7 +35,7 @@ class MainActivity : MvpAppCompatActivity() {
         when (item.itemId) {
 
             R.id.action_add -> {
-                //    navController.navigate(R.id.fragment_saved)
+
                 navHostFragment.navController.navigate(R.id.fragment_saved)
             }
         }
