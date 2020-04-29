@@ -13,6 +13,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import com.olehmesh.randomusers_task.Constants
 import com.olehmesh.randomusers_task.R
+import com.olehmesh.randomusers_task.databinding.MainListItemBinding
 import com.olehmesh.randomusers_task.models.Result
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.main_list_item.*
@@ -24,9 +25,11 @@ class UsersAdapter : RecyclerView.Adapter<UsersAdapter.ItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
 
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.main_list_item, parent, false)
+        val v = LayoutInflater.from(parent.context)
 
-        return ItemViewHolder(v)
+        val binding = MainListItemBinding.inflate(v, parent, false)
+
+        return ItemViewHolder(binding)
     }
 
     override fun onBindViewHolder(itemViewHolder: ItemViewHolder, i: Int) {
@@ -67,16 +70,15 @@ class UsersAdapter : RecyclerView.Adapter<UsersAdapter.ItemViewHolder>() {
         notifyDataSetChanged()
     }
 
-
-    inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), LayoutContainer {
+    inner class ItemViewHolder(private val binding: MainListItemBinding) :
+        RecyclerView.ViewHolder(binding.root), LayoutContainer {
 
         override val containerView: View?
             get() = itemView
 
         fun bind(item: Result) {
 
-            tvFirstName.text = item.name!!.first
-            tvCity.text = item.location!!.city
+            binding.result = item
 
             Glide.with(itemView.context)
                 .load(item.picture!!.large)
