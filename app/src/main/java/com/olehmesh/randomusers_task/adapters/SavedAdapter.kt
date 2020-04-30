@@ -4,10 +4,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
-import com.bumptech.glide.request.target.Target
-import com.olehmesh.randomusers_task.R
 import com.olehmesh.randomusers_task.database.entity.UserInfo
 import com.olehmesh.randomusers_task.databinding.SavedListItemBinding
 import kotlinx.android.extensions.LayoutContainer
@@ -47,14 +43,6 @@ class SavedAdapter(var dbEntity: MutableList<UserInfo>) :
 
             binding.userInfo = entity
             binding.executePendingBindings()
-
-            Glide.with(itemView.context)
-                .asBitmap()
-                .load(entity.image)
-                .apply(RequestOptions().override(Target.SIZE_ORIGINAL).encodeQuality(100))
-                .placeholder(R.drawable.placeholder)
-                .error(R.drawable.placeholder)
-                .into(ivSaved)
 
             delete.setOnClickListener {
 

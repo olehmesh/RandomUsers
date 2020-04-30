@@ -8,15 +8,11 @@ import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
-import com.bumptech.glide.request.target.Target
 import com.olehmesh.randomusers_task.Constants
 import com.olehmesh.randomusers_task.R
 import com.olehmesh.randomusers_task.databinding.MainListItemBinding
 import com.olehmesh.randomusers_task.models.Result
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.main_list_item.*
 
 class UsersAdapter : RecyclerView.Adapter<UsersAdapter.ItemViewHolder>() {
 
@@ -79,13 +75,6 @@ class UsersAdapter : RecyclerView.Adapter<UsersAdapter.ItemViewHolder>() {
         fun bind(item: Result) {
 
             binding.result = item
-
-            Glide.with(itemView.context)
-                .load(item.picture!!.large)
-                .apply(RequestOptions().override(Target.SIZE_ORIGINAL).encodeQuality(100))
-                .placeholder(R.drawable.placeholder)
-                .error(R.drawable.placeholder)
-                .into(ivAvatar)
 
         }
 

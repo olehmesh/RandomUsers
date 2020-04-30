@@ -30,6 +30,8 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_margin="8dp"
+                    image="@{user_info.image}"
+                    errorImage="@{@drawable/placeholder}"
                     app:srcCompat="@mipmap/ic_launcher" />
 
             <LinearLayout

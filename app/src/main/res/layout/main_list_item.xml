@@ -28,7 +28,8 @@
                     android:layout_height="70dp"
                     android:layout_margin="5dp"
                     android:scaleType="centerCrop"
-
+                    picture="@{result.picture.large}"
+                    errorImage="@{@drawable/placeholder}"
                     tools:src="@tools:sample/avatars" android:layout_marginStart="16dp"
                     app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="16dp"
                     app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
