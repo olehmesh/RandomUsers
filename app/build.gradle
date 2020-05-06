@@ -15,6 +15,10 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+    
     androidExtensions {
         experimental = true
     }
@@ -25,7 +29,7 @@ android {
 
     compileSdkVersion 29
     defaultConfig {
-        applicationId "com.olehmesh.randomusers_task"
+        applicationId "com.olehmesh.randomusers"
         minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
@@ -41,7 +45,7 @@ android {
         }
     }
 
-    kotlinOptions { jvmTarget = "1.8" }
+
 }
 
 dependencies {

@@ -7,7 +7,7 @@
 
         <variable
                 name="user_info"
-                type="com.olehmesh.randomusers_task.database.entity.UserInfo" />
+                type="com.olehmesh.randomusers.database.entity.UserInfo" />
     </data>
 
     <androidx.cardview.widget.CardView
