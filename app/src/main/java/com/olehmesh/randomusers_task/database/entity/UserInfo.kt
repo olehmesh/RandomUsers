@@ -8,7 +8,6 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.olehmesh.randomusers_task.custom_views.CustomImageView
 import de.hdodenhof.circleimageview.CircleImageView
 
 

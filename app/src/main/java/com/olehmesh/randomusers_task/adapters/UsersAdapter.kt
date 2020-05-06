@@ -7,17 +7,17 @@ import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
+import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.olehmesh.randomusers_task.Constants
-import com.olehmesh.randomusers_task.R
 import com.olehmesh.randomusers_task.databinding.MainListItemBinding
 import com.olehmesh.randomusers_task.models.Result
 import kotlinx.android.extensions.LayoutContainer
 
-class UsersAdapter : RecyclerView.Adapter<UsersAdapter.ItemViewHolder>() {
+
+class UsersAdapter : PagedListAdapter<Result, UsersAdapter.ItemViewHolder>(DiffUtilCallBack()) {
 
     private lateinit var navController: NavController
-    private lateinit var mList: List<Result>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
 
@@ -30,40 +30,40 @@ class UsersAdapter : RecyclerView.Adapter<UsersAdapter.ItemViewHolder>() {
 
     override fun onBindViewHolder(itemViewHolder: ItemViewHolder, i: Int) {
 
-        itemViewHolder.bind(mList[i])
+        val mList: Result? = getItem(i)
+        when {
+            mList != null -> {
+                itemViewHolder.bind(mList)
+            }
+        }
+
         itemViewHolder.itemView.setOnClickListener {
 
             navController = Navigation.findNavController(itemViewHolder.itemView)
             val builder = NavOptions.Builder()
             val navOptions = builder
-                .setEnterAnim(R.anim.slide_in_right)
-                .setExitAnim(R.anim.slide_out_right)
-                .setPopEnterAnim(R.anim.slide_in_left)
-                .setPopExitAnim(R.anim.slide_out_left)
+                .setEnterAnim(com.olehmesh.randomusers_task.R.anim.slide_in_right)
+                .setExitAnim(com.olehmesh.randomusers_task.R.anim.slide_out_right)
+                .setPopEnterAnim(com.olehmesh.randomusers_task.R.anim.slide_in_left)
+                .setPopExitAnim(com.olehmesh.randomusers_task.R.anim.slide_out_left)
                 .build()
 
             val bundle = Bundle()
 
-            bundle.putString(Constants.NAME, mList[i].name!!.first)
-            bundle.putString(Constants.CITY, mList[i].location!!.city)
-            bundle.putString(Constants.IMAGE, mList[i].picture!!.large)
-            bundle.putString(Constants.EMAIL, mList[i].email)
-            bundle.putString(Constants.PHONE, mList[i].phone)
+            bundle.putString(Constants.NAME, mList?.name!!.first)
+            bundle.putString(Constants.CITY, mList.location!!.city)
+            bundle.putString(Constants.IMAGE, mList.picture!!.large)
+            bundle.putString(Constants.EMAIL, mList.email)
+            bundle.putString(Constants.PHONE, mList.phone)
 
-            navController.navigate(R.id.fragment_detail, bundle, navOptions)
+            navController.navigate(
+                com.olehmesh.randomusers_task.R.id.fragment_detail,
+                bundle,
+                navOptions
+            )
 
         }
 
-    }
-
-    override fun getItemCount(): Int {
-        return mList.count()
-    }
-
-    fun setData(mList: List<Result>) {
-        this.mList = mList
-
-        notifyDataSetChanged()
     }
 
     inner class ItemViewHolder(private val binding: MainListItemBinding) :
@@ -72,11 +72,14 @@ class UsersAdapter : RecyclerView.Adapter<UsersAdapter.ItemViewHolder>() {
         override val containerView: View?
             get() = itemView
 
+
         fun bind(item: Result) {
 
             binding.result = item
+            binding.executePendingBindings()
 
         }
 
     }
+
 }

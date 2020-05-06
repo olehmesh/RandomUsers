@@ -1,5 +1,6 @@
 package com.olehmesh.randomusers_task.custom_views
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Path
@@ -15,6 +16,7 @@ class CustomImageView : AppCompatImageView {
 
     constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle) {}
 
+    @SuppressLint("DrawAllocation")
     override fun onDraw(canvas: Canvas) {
         val radius = 17.0f
         val clipPath = Path()

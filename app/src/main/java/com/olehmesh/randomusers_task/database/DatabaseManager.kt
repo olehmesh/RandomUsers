@@ -10,7 +10,6 @@ import com.olehmesh.randomusers_task.database.dao.DaoUserInfo
 import com.olehmesh.randomusers_task.database.entity.DateCurrent
 import com.olehmesh.randomusers_task.database.entity.UserInfo
 
-
 @Database(entities = [UserInfo::class, DateCurrent::class], version = 1, exportSchema = false)
 
 abstract class DatabaseManager : RoomDatabase() {

@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.navigation.fragment.NavHostFragment
-import com.arellomobile.mvp.MvpAppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import javax.inject.Inject
 
-class MainActivity : MvpAppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     @Inject
     lateinit var navHostFragment: NavHostFragment

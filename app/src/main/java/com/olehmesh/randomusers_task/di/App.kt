@@ -15,7 +15,7 @@ class App : Application() {
         component = DaggerAppComponent.create()
     }
 
-    fun getAppComponent(): AppComponent {
-        return component
-    }
+    /*  fun getAppComponent(): AppComponent {
+          return component
+      } */
 }
