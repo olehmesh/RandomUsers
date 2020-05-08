@@ -23,7 +23,14 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <include layout="@layout/content_main" />
+    <androidx.fragment.app.FragmentContainerView xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/nav_host_fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:defaultNavHost="true"
+            tools:context=".MainActivity"
+            app:navGraph="@navigation/main_graph" />
 
 </com.google.android.material.appbar.AppBarLayout>
 
