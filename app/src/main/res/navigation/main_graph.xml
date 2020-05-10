@@ -9,20 +9,20 @@
 
     <fragment
             android:id="@+id/fragment_main"
-            android:name="com.olehmesh.randomusers.views.MainFragment"
+            android:name="com.olehmesh.randomusers.presentation.fragments.MainFragment"
             android:label="fragment_main"
             tools:layout="@layout/fragment_main"/>
 
     <fragment
             android:id="@+id/fragment_detail"
-            android:name="com.olehmesh.randomusers.views.DetailFragment"
+            android:name="com.olehmesh.randomusers.presentation.fragments.DetailFragment"
             android:label="fragment_detail"
             tools:layout="@layout/fragment_detail"/>
 
 
     <fragment
             android:id="@+id/fragment_saved"
-            android:name="com.olehmesh.randomusers.views.SavedFragment"
+            android:name="com.olehmesh.randomusers.presentation.fragments.SavedFragment"
             android:label="fragment_saved"
             tools:layout="@layout/fragment_saved"/>
 

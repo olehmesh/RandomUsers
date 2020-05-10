@@ -1,6 +1,6 @@
 package com.olehmesh.randomusers.di.module
 
-import com.olehmesh.randomusers.network.ApiInstance
+import com.olehmesh.randomusers.repository.network.ApiInstance
 import dagger.Module
 import dagger.Provides
 

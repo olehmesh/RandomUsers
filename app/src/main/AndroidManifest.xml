@@ -16,7 +16,7 @@
             android:supportsRtl="true"
             android:usesCleartextTraffic="true"
             android:theme="@style/AppTheme" tools:ignore="AllowBackup,GoogleAppIndexingWarning" tools:targetApi="m">
-        <activity android:name="com.olehmesh.randomusers.MainActivity">
+        <activity android:name="com.olehmesh.randomusers.presentation.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
