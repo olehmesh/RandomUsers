@@ -1,4 +1,4 @@
-package com.olehmesh.randomusers.repository.models
+package com.olehmesh.randomusers.repository.retrofit_pojo
 
 import com.google.gson.annotations.SerializedName
 

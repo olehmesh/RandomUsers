@@ -2,7 +2,7 @@ package com.olehmesh.randomusers.repository
 
 import android.util.Log
 import androidx.paging.ItemKeyedDataSource
-import com.olehmesh.randomusers.repository.models.Result
+import com.olehmesh.randomusers.repository.retrofit_pojo.Result
 import com.olehmesh.randomusers.repository.network.ApiInstance
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job

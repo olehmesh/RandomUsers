@@ -8,7 +8,7 @@ import android.graphics.RectF
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatImageView
 
-class CustomImageView : AppCompatImageView {
+class ImageRoundCorners : AppCompatImageView {
 
     constructor(context: Context) : super(context) {}
 

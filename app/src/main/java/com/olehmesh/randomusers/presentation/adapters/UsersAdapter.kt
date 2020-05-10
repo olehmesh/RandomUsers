@@ -11,7 +11,7 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.olehmesh.randomusers.R
 import com.olehmesh.randomusers.databinding.MainListItemBinding
-import com.olehmesh.randomusers.repository.models.Result
+import com.olehmesh.randomusers.repository.retrofit_pojo.Result
 import kotlinx.android.extensions.LayoutContainer
 
 

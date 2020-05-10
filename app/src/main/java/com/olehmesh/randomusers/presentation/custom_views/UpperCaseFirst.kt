@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatTextView
 import java.util.*
 
-class CustomTextView(context: Context, attrs: AttributeSet) : AppCompatTextView(context, attrs) {
+class UpperCaseFirst(context: Context, attrs: AttributeSet) : AppCompatTextView(context, attrs) {
 
     override fun setText(c: CharSequence, type: BufferType) {
         var cap = c
@@ -13,10 +13,12 @@ class CustomTextView(context: Context, attrs: AttributeSet) : AppCompatTextView(
         try {
             cap =
                 cap[0].toString().toUpperCase(Locale.getDefault()) + cap.subSequence(1, cap.length)
-                    .toString().toLowerCase()
+                    .toString().toLowerCase(Locale.getDefault())
             for (i in cap.indices) {
                 if (cap[i].toString().contains(" ")) {
-                    cap = cap.subSequence(0, i + 1).toString() + cap[i + 1].toString().toUpperCase() + cap.subSequence(
+                    cap = cap.subSequence(0, i + 1).toString() + cap[i + 1].toString().toUpperCase(
+                        Locale.getDefault()
+                    ) + cap.subSequence(
                         i + 2,
                         cap.length
                     ).toString().toLowerCase(Locale.getDefault())

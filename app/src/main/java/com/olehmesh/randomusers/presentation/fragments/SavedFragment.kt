@@ -5,10 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.olehmesh.randomusers.R
+import com.olehmesh.randomusers.domain.MainViewModel
+import com.olehmesh.randomusers.domain.RoomViewModel
 import com.olehmesh.randomusers.presentation.adapters.SavedAdapter
 import com.olehmesh.randomusers.repository.database.DatabaseManager
 import com.olehmesh.randomusers.repository.database.entity.UserEntity
@@ -16,10 +19,8 @@ import kotlinx.android.synthetic.main.fragment_saved.*
 
 
 class SavedFragment : Fragment(), SavedAdapter.OnDeleteListener {
-
+    private val roomViewModel by viewModels<RoomViewModel>()
     private var databaseManager: DatabaseManager? = null
-    private lateinit var dbLiveData: LiveData<MutableList<UserEntity>>
-    private lateinit var recyclerAdapter: SavedAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,32 +28,21 @@ class SavedFragment : Fragment(), SavedAdapter.OnDeleteListener {
         savedInstanceState: Bundle?
     ): View? {
 
-        databaseManager = DatabaseManager.getDatabase(context)
-        dbLiveData = databaseManager?.daoUserInfo()!!.all
-
-        dbLiveData.observe(viewLifecycleOwner, Observer {
-
-            recyclerAdapter = SavedAdapter(it)
-            recyclerViewSaved.adapter = recyclerAdapter
-            recyclerViewSaved.layoutManager = LinearLayoutManager(context)
-
-            recyclerAdapter.setOnDeleteListener(this)
-        })
+        roomViewModel.dbLiveData.observe(viewLifecycleOwner, Observer { initRecyclerView(it) })
 
         return inflater.inflate(R.layout.fragment_saved, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-
-
+    private fun initRecyclerView(users: MutableList<UserEntity>) {
+        val recyclerAdapter = SavedAdapter(users)
+        recyclerViewSaved.layoutManager = LinearLayoutManager(context)
+        recyclerViewSaved.adapter = recyclerAdapter
+        recyclerAdapter.setOnDeleteListener(this)
     }
 
     override fun onDelete(entityDatabase: UserEntity) {
         databaseManager?.daoUserInfo()?.delete(entityDatabase)
     }
-
 
 }
 

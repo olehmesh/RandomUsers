@@ -3,13 +3,15 @@ package com.olehmesh.randomusers.domain
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.paging.*
-import com.olehmesh.randomusers.repository.models.Result
+import com.olehmesh.randomusers.repository.retrofit_pojo.Result
 import com.olehmesh.randomusers.repository.ItemKeyedSource
+import com.olehmesh.randomusers.repository.database.entity.UserEntity
 import kotlinx.coroutines.Dispatchers
 
 class MainViewModel : ViewModel() {
 
     var liveData: LiveData<PagedList<Result>>
+
 
     init {
         val config = PagedList.Config.Builder()
@@ -18,6 +20,7 @@ class MainViewModel : ViewModel() {
             .build()
 
         liveData = initPagedList(config).build()
+
 
     }
 
