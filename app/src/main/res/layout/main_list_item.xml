@@ -7,7 +7,7 @@
 
         <variable
                 name="result"
-                type="com.olehmesh.randomusers.repository.retrofit_pojo.Result" />
+                type="com.olehmesh.randomusers.repository.network.retrofit_pojo.Result" />
     </data>
 
     <androidx.cardview.widget.CardView

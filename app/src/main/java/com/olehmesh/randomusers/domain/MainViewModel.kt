@@ -3,9 +3,8 @@ package com.olehmesh.randomusers.domain
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.paging.*
-import com.olehmesh.randomusers.repository.retrofit_pojo.Result
 import com.olehmesh.randomusers.repository.ItemKeyedSource
-import com.olehmesh.randomusers.repository.database.entity.UserEntity
+import com.olehmesh.randomusers.repository.network.retrofit_pojo.Result
 import kotlinx.coroutines.Dispatchers
 
 class MainViewModel : ViewModel() {

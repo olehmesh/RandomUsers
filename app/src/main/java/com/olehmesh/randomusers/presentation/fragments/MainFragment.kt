@@ -9,34 +9,33 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.olehmesh.randomusers.R
+import com.olehmesh.randomusers.di.App
 import com.olehmesh.randomusers.presentation.adapters.UsersAdapter
 import com.olehmesh.randomusers.domain.MainViewModel
 import kotlinx.android.synthetic.main.fragment_main.*
-
+import javax.inject.Inject
 
 class MainFragment : Fragment() {
 
-    //  @Inject
-    //  lateinit var adapter: UsersAdapter
+    @Inject
+    lateinit var adapter: UsersAdapter
     private val mainViewModel by viewModels<MainViewModel>()
-    private val testAdapter = UsersAdapter()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
+        App.component.inject(this)
         mainViewModel.getData().observe(viewLifecycleOwner, Observer {
-            testAdapter.submitList(it)
+            adapter.submitList(it)
         })
 
         return inflater.inflate(R.layout.fragment_main, container, false)
 
     }
 
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
         recyclerMain.layoutManager = LinearLayoutManager(context)
-        recyclerMain.adapter = testAdapter
+        recyclerMain.adapter = adapter
 
     }
 

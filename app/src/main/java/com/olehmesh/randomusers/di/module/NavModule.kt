@@ -1,7 +1,7 @@
 package com.olehmesh.randomusers.di.module
 
 import androidx.navigation.fragment.NavHostFragment
-import com.olehmesh.randomusers.di.scope.AppScope
+import com.olehmesh.randomusers.di.scope.ApiScope
 import dagger.Module
 import dagger.Provides
 
@@ -9,7 +9,7 @@ import dagger.Provides
 @Module
 class NavModule {
 
-    @AppScope
+    @ApiScope
     @Provides
     fun provideNavHostFragment(): NavHostFragment {
         return NavHostFragment()

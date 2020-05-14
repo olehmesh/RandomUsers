@@ -24,7 +24,6 @@ class SavedAdapter(var dbEntity: MutableList<UserEntity>) :
 
     override fun onBindViewHolder(holder: SavedListHolder, position: Int) {
 
-
         holder.bind(dbEntity[position])
 
     }

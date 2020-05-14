@@ -1,4 +1,4 @@
-package com.olehmesh.randomusers.repository.retrofit_pojo
+package com.olehmesh.randomusers.repository.network.retrofit_pojo
 
 import android.graphics.drawable.Drawable
 import androidx.databinding.BindingAdapter
@@ -6,7 +6,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.gson.annotations.SerializedName
 import com.olehmesh.randomusers.presentation.custom_views.ImageRoundCorners
-
 
 data class Result(
 

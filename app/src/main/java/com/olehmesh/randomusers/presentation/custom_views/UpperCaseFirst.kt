@@ -2,7 +2,9 @@ package com.olehmesh.randomusers.presentation.custom_views
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import androidx.appcompat.widget.AppCompatTextView
+import com.olehmesh.randomusers.BuildConfig
 import java.util.*
 
 class UpperCaseFirst(context: Context, attrs: AttributeSet) : AppCompatTextView(context, attrs) {
@@ -25,7 +27,7 @@ class UpperCaseFirst(context: Context, attrs: AttributeSet) : AppCompatTextView(
                 }
             }
         } catch (e: Exception) {
-            // Log.d(Constants.TAG, "UpperCase CustomTextView Exception")
+            Log.d(BuildConfig.DEBUG.toString(), "UpperCase CustomTextView Exception")
         }
 
         super.setText(cap, type)
