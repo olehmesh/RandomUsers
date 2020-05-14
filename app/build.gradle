@@ -5,6 +5,11 @@ apply plugin: 'androidx.navigation.safeargs'
 apply plugin: 'kotlin-kapt'
 
 android {
+
+    defaultConfig {
+        vectorDrawables.useSupportLibrary = true
+    }
+
     dataBinding {
         enabled = true
     }

@@ -63,19 +63,19 @@
                     android:id="@+id/savedDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="7dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginEnd="50dp"
                     android:text="date" />
 
-            <TextView
+
+            <ImageView
                     android:id="@+id/delete"
-                    android:layout_marginTop="7dp"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
                     android:padding="10dp"
-                    android:text="[DEL]"
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:layout_marginTop="7dp"
+                    android:src="@drawable/ic_delete" />
+
 
         </LinearLayout>
 

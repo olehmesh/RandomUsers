@@ -28,20 +28,4 @@ class UserEntity {
     @ColumnInfo(name = "date_current")
     var dateCurrent: Long = 0
 
-
-    companion object {
-        @BindingAdapter("image", "errorImage")
-        @JvmStatic
-        fun loadSaveImage(imageView: CircleImageView, imageURL: String?, errorImage: Drawable) {
-            Glide.with(imageView.context)
-                .load(imageURL)
-                .apply(RequestOptions().encodeQuality(100))
-                .placeholder(errorImage)
-                .error(errorImage)
-                .into(imageView)
-        }
-    }
-
-
-
 }

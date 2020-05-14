@@ -14,8 +14,4 @@ class App : Application() {
         super.onCreate()
         component = DaggerAppComponent.create()
     }
-
-    /*  fun getAppComponent(): AppComponent {
-          return component
-      } */
 }
