@@ -7,6 +7,7 @@ import com.olehmesh.randomusers.repository.ItemKeyedSource
 import com.olehmesh.randomusers.repository.network.retrofit_pojo.Result
 import kotlinx.coroutines.Dispatchers
 
+
 class MainViewModel : ViewModel() {
 
     var liveData: LiveData<PagedList<Result>>
@@ -24,6 +25,7 @@ class MainViewModel : ViewModel() {
     }
 
     fun getData(): LiveData<PagedList<Result>> = liveData
+
 
     private fun initPagedList(config: PagedList.Config): LivePagedListBuilder<String, Result> {
 

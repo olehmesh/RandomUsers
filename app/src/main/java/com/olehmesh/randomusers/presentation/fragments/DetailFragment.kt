@@ -14,12 +14,14 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.olehmesh.randomusers.R
+import com.olehmesh.randomusers.di.App
 import com.olehmesh.randomusers.repository.database.DatabaseManager
 import com.olehmesh.randomusers.repository.database.entity.DateCurrent
 import com.olehmesh.randomusers.repository.database.entity.UserEntity
-import com.olehmesh.randomusers.di.App
 import kotlinx.android.synthetic.main.fragment_detail.*
 import kotlinx.coroutines.*
+import java.text.SimpleDateFormat
+import java.util.*
 import javax.inject.Inject
 
 
@@ -74,7 +76,7 @@ class DetailFragment : Fragment() {
                     userEntity.image =
                         requireArguments().getString(R.string.image.toString()).toString()
 
-                    dateCurrent.dateCurrent = System.currentTimeMillis()
+                    dateCurrent.dateCurrent = timeToDate()
 
                     daoUserAndDate?.insertUserAndDate(userEntity, dateCurrent)
 
@@ -92,6 +94,16 @@ class DetailFragment : Fragment() {
             }
 
         }
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    private fun timeToDate(): String {
+
+        val currentTime = System.currentTimeMillis()
+        val simpleDateFormat = SimpleDateFormat("dd.MM 'at' HH.mm")
+        val date = Date(currentTime)
+        return simpleDateFormat.format(date)
+
     }
 }
 

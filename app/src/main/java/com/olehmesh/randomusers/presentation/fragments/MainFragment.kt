@@ -24,6 +24,7 @@ class MainFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         App.component.inject(this)
         mainViewModel.getData().observe(viewLifecycleOwner, Observer {
+
             adapter.submitList(it)
         })
 

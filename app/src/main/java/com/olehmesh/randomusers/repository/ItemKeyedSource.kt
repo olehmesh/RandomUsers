@@ -47,7 +47,9 @@ class ItemKeyedSource(context: CoroutineContext) : ItemKeyedDataSource<String, R
     }
 
     override fun loadAfter(params: LoadParams<String?>, callback: LoadCallback<Result?>) {
+
         scope.launch {
+
             try {
                 val response = api.fetchUsers(after = params.requestedLoadSize)
                 when {

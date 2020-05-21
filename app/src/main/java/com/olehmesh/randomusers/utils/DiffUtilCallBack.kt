@@ -1,4 +1,4 @@
-package com.olehmesh.randomusers.presentation.adapters
+package com.olehmesh.randomusers.utils
 
 import androidx.recyclerview.widget.DiffUtil
 import com.olehmesh.randomusers.repository.network.retrofit_pojo.Result

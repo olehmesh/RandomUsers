@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.olehmesh.randomusers.R
 import com.olehmesh.randomusers.databinding.MainListItemBinding
 import com.olehmesh.randomusers.repository.network.retrofit_pojo.Result
+import com.olehmesh.randomusers.utils.DiffUtilCallBack
 import kotlinx.android.extensions.LayoutContainer
 
 

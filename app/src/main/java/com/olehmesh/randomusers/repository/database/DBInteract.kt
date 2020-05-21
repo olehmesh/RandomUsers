@@ -1,11 +1,11 @@
 package com.olehmesh.randomusers.repository.database
 
 import androidx.lifecycle.LiveData
-import com.olehmesh.randomusers.repository.database.dao.DaoUserInfo
-import com.olehmesh.randomusers.repository.database.entity.UserEntity
+import com.olehmesh.randomusers.repository.database.dao.DaoUserAndDate
+import com.olehmesh.randomusers.repository.database.relation.DateAndInfo
 
-class DBInteract(private val daoUserInfo: DaoUserInfo) {
+class DBInteract(private val daoUserAndDate: DaoUserAndDate) {
 
-    val allDaoUser: LiveData<MutableList<UserEntity>> = daoUserInfo.all
+    val requestAll: LiveData<MutableList<DateAndInfo>> = daoUserAndDate.getDateAndUsers()
 
 }

@@ -6,6 +6,7 @@ import com.olehmesh.randomusers.di.module.NetworkModule
 import com.olehmesh.randomusers.di.module.NavModule
 import com.olehmesh.randomusers.di.module.StorageModule
 import com.olehmesh.randomusers.di.scope.ApiScope
+import com.olehmesh.randomusers.presentation.fragments.DetailFragment
 import com.olehmesh.randomusers.presentation.fragments.MainFragment
 import com.olehmesh.randomusers.repository.ItemKeyedSource
 import dagger.Component

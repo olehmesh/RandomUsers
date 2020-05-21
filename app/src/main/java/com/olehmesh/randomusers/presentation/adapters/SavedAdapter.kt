@@ -3,13 +3,15 @@ package com.olehmesh.randomusers.presentation.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
-import com.olehmesh.randomusers.repository.database.entity.UserEntity
 import com.olehmesh.randomusers.databinding.SavedListItemBinding
+import com.olehmesh.randomusers.repository.database.relation.DateAndInfo
+import com.olehmesh.randomusers.repository.database.entity.UserEntity
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.saved_list_item.*
 
-class SavedAdapter(var dbEntity: MutableList<UserEntity>) :
+class SavedAdapter(var dbEntity: MutableList<DateAndInfo>) :
     RecyclerView.Adapter<SavedAdapter.SavedListHolder>() {
 
     private var onDeleteListener: OnDeleteListener? = null
@@ -20,6 +22,7 @@ class SavedAdapter(var dbEntity: MutableList<UserEntity>) :
         val binding = SavedListItemBinding.inflate(inflater, parent, false)
 
         return SavedListHolder(binding)
+
     }
 
     override fun onBindViewHolder(holder: SavedListHolder, position: Int) {
@@ -39,14 +42,15 @@ class SavedAdapter(var dbEntity: MutableList<UserEntity>) :
         override val containerView: View?
             get() = itemView
 
-        fun bind(entity: UserEntity) {
+        fun bind(entity: DateAndInfo) {
 
-            binding.userInfo = entity
+            binding.dateAndInfo = entity
             binding.executePendingBindings()
 
             delete.setOnClickListener {
 
-                onDeleteListener!!.onDelete(dbEntity[adapterPosition])
+                onDeleteListener!!.onDelete(dbEntity[adapterPosition].user)
+
                 dbEntity.removeAt(adapterPosition)
                 notifyItemRemoved(adapterPosition)
 
@@ -56,11 +60,13 @@ class SavedAdapter(var dbEntity: MutableList<UserEntity>) :
 
     }
 
+
     fun setOnDeleteListener(onDeleteListener: OnDeleteListener) {
         this.onDeleteListener = onDeleteListener
     }
 
     interface OnDeleteListener {
-        fun onDelete(entityDatabase: UserEntity)
+        fun onDelete(userEntity: UserEntity)
     }
+
 }
