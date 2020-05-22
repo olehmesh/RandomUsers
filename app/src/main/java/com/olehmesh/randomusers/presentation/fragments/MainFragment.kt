@@ -22,11 +22,10 @@ class MainFragment : Fragment() {
     private val mainViewModel by viewModels<MainViewModel>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        App.component.inject(this)
-        mainViewModel.getData().observe(viewLifecycleOwner, Observer {
 
-            adapter.submitList(it)
-        })
+        App.component.inject(this)
+
+        mainViewModel.getData().observe(viewLifecycleOwner, Observer { adapter.submitList(it) })
 
         return inflater.inflate(R.layout.fragment_main, container, false)
 

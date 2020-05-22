@@ -9,25 +9,33 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.olehmesh.randomusers.R
+import com.olehmesh.randomusers.di.App
 import com.olehmesh.randomusers.domain.RoomViewModel
 import com.olehmesh.randomusers.presentation.adapters.SavedAdapter
 import com.olehmesh.randomusers.repository.database.DatabaseManager
 import com.olehmesh.randomusers.repository.database.entity.UserEntity
 import com.olehmesh.randomusers.repository.database.relation.DateAndUser
 import kotlinx.android.synthetic.main.fragment_saved.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 
 class SavedFragment : Fragment(), SavedAdapter.OnDeleteListener {
     private val roomViewModel by viewModels<RoomViewModel>()
-    private var databaseManager: DatabaseManager? = null
+    private val scope = CoroutineScope(Job())
+
+    @Inject
+    lateinit var databaseManager: DatabaseManager
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        databaseManager = DatabaseManager.getDatabase(context)
+        App.component.inject(this)
 
         roomViewModel.dbLiveData.observe(viewLifecycleOwner, Observer { initRecyclerView(it) })
 
@@ -44,7 +52,9 @@ class SavedFragment : Fragment(), SavedAdapter.OnDeleteListener {
     }
 
     override fun onDelete(userEntity: UserEntity) {
-        databaseManager?.daoUserInfo()?.delete(userEntity)
+        scope.launch(Dispatchers.IO) {
+            databaseManager.daoUserInfo().delete(userEntity)
+        }
     }
 
 }

@@ -10,7 +10,6 @@ data class DateAndUser(
     @Embedded
     var date: DateCurrent,
 
-
     @Relation(parentColumn = "parent_id", entityColumn = "id")
     var user: UserEntity
 

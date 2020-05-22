@@ -35,6 +35,9 @@ class DetailFragment : Fragment() {
     @Inject
     lateinit var date: DateCurrent
 
+    @Inject
+    lateinit var db: DatabaseManager
+
     private val scope = CoroutineScope(Job())
 
 
@@ -67,8 +70,7 @@ class DetailFragment : Fragment() {
             scope.launch(Dispatchers.Main) {
                 val job = launch(Dispatchers.IO) {
 
-                    val db = DatabaseManager.getDatabase(context)
-                    val daoUserAndDate = db?.daoUserAndDate()
+                    val daoUserAndDate = db.daoUserAndDate()
 
                     userEntity.name = tvDetailName!!.text as String
                     userEntity.city = tvDetailCity!!.text as String
@@ -77,7 +79,7 @@ class DetailFragment : Fragment() {
 
                     date.dateCurrent = timeToDate()
 
-                    daoUserAndDate?.insertUserAndDate(userEntity, date)
+                    daoUserAndDate.insertUserAndDate(userEntity, date)
 
                 }
 

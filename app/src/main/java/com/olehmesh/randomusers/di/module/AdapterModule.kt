@@ -15,5 +15,4 @@ class AdapterModule {
         return UsersAdapter()
     }
 
-
 }

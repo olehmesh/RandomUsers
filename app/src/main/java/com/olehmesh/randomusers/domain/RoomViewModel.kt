@@ -1,20 +1,24 @@
 package com.olehmesh.randomusers.domain
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
+import com.olehmesh.randomusers.di.App
 import com.olehmesh.randomusers.repository.database.DatabaseManager
 import com.olehmesh.randomusers.repository.database.relation.DateAndUser
+import javax.inject.Inject
 
-class RoomViewModel(application: Application) : AndroidViewModel(application) {
+
+class RoomViewModel : ViewModel() {
 
     var dbLiveData: LiveData<MutableList<DateAndUser>>
 
+    @Inject
+    lateinit var db: DatabaseManager
+
     init {
-
-        val usersDao = DatabaseManager.getDatabase(application)!!.daoUserAndDate().getDateAndUsers()
-
-        dbLiveData = usersDao
+        App.component.inject(this)
+        val usersAndDateDao = db.daoUserAndDate().getDateAndUsers()
+        dbLiveData = usersAndDateDao
     }
 
 }
