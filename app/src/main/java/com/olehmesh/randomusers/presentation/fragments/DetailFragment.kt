@@ -47,20 +47,19 @@ class DetailFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_detail, container, false)
     }
 
-    @SuppressLint("SetTextI18n")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        tvDetailName!!.text = "Name: " + requireArguments().getString(R.string.name.toString())
-        tvDetailCity!!.text = "City: " + requireArguments().getString(R.string.city.toString())
+        tvDetailName!!.text = requireArguments().getString(R.string.name.toString())
+        tvDetailCity!!.text = requireArguments().getString(R.string.city.toString())
 
         Glide.with(this).asBitmap()
             .load(requireArguments().getString(R.string.image.toString()))
             .apply(RequestOptions().encodeQuality(100))
             .into(ivDetailLarge)
 
-        tvDetailEmail!!.text = "E-mail: " + requireArguments().getString(R.string.email.toString())
-        tvDetailPhone!!.text = "Phone: " + requireArguments().getString(R.string.phone.toString())
+        tvDetailEmail!!.text = requireArguments().getString(R.string.email.toString())
+        tvDetailPhone!!.text = requireArguments().getString(R.string.phone.toString())
 
 
         fab_bottom.setOnClickListener {
