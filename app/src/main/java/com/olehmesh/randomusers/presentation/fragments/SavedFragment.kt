@@ -13,7 +13,7 @@ import com.olehmesh.randomusers.domain.RoomViewModel
 import com.olehmesh.randomusers.presentation.adapters.SavedAdapter
 import com.olehmesh.randomusers.repository.database.DatabaseManager
 import com.olehmesh.randomusers.repository.database.entity.UserEntity
-import com.olehmesh.randomusers.repository.database.relation.DateAndInfo
+import com.olehmesh.randomusers.repository.database.relation.DateAndUser
 import kotlinx.android.synthetic.main.fragment_saved.*
 
 
@@ -34,7 +34,7 @@ class SavedFragment : Fragment(), SavedAdapter.OnDeleteListener {
         return inflater.inflate(R.layout.fragment_saved, container, false)
     }
 
-    private fun initRecyclerView(users: MutableList<DateAndInfo>) {
+    private fun initRecyclerView(users: MutableList<DateAndUser>) {
 
         val recyclerAdapter = SavedAdapter(users)
         recyclerViewSaved.layoutManager = LinearLayoutManager(context)

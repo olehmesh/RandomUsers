@@ -3,15 +3,14 @@ package com.olehmesh.randomusers.presentation.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.olehmesh.randomusers.databinding.SavedListItemBinding
-import com.olehmesh.randomusers.repository.database.relation.DateAndInfo
+import com.olehmesh.randomusers.repository.database.relation.DateAndUser
 import com.olehmesh.randomusers.repository.database.entity.UserEntity
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.saved_list_item.*
 
-class SavedAdapter(var dbEntity: MutableList<DateAndInfo>) :
+class SavedAdapter(var dbEntity: MutableList<DateAndUser>) :
     RecyclerView.Adapter<SavedAdapter.SavedListHolder>() {
 
     private var onDeleteListener: OnDeleteListener? = null
@@ -42,9 +41,9 @@ class SavedAdapter(var dbEntity: MutableList<DateAndInfo>) :
         override val containerView: View?
             get() = itemView
 
-        fun bind(entity: DateAndInfo) {
+        fun bind(entity: DateAndUser) {
 
-            binding.dateAndInfo = entity
+            binding.dateAndUser = entity
             binding.executePendingBindings()
 
             delete.setOnClickListener {

@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.olehmesh.randomusers.repository.database.entity.DateCurrent
 import com.olehmesh.randomusers.repository.database.entity.UserEntity
-import com.olehmesh.randomusers.repository.database.relation.DateAndInfo
+import com.olehmesh.randomusers.repository.database.relation.DateAndUser
 
 @Dao
 interface DaoUserAndDate {
@@ -23,7 +23,7 @@ interface DaoUserAndDate {
 
     @Transaction
     @Query("SELECT * FROM table_date")
-    fun getDateAndUsers(): LiveData<MutableList<DateAndInfo>>
+    fun getDateAndUsers(): LiveData<MutableList<DateAndUser>>
 
 }
 

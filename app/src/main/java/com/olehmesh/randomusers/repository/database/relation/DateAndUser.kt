@@ -5,10 +5,10 @@ import androidx.room.Relation
 import com.olehmesh.randomusers.repository.database.entity.DateCurrent
 import com.olehmesh.randomusers.repository.database.entity.UserEntity
 
-data class DateAndInfo(
+data class DateAndUser(
 
     @Embedded
-    var dateCurrent: DateCurrent,
+    var date: DateCurrent,
 
 
     @Relation(parentColumn = "parent_id", entityColumn = "id")

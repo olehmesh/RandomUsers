@@ -6,8 +6,8 @@
     <data>
 
         <variable
-                name="date_and_info"
-                type="com.olehmesh.randomusers.repository.database.relation.DateAndInfo" />
+                name="date_and_user"
+                type="com.olehmesh.randomusers.repository.database.relation.DateAndUser" />
 
     </data>
 
@@ -33,7 +33,7 @@
                     android:layout_margin="8dp"
                     app:civ_border_color="#1C5720"
                     app:civ_border_width="2dp"
-                    image="@{date_and_info.user.image.toString()}"
+                    image="@{date_and_user.user.image.toString()}"
                     errorImage="@{@drawable/placeholder}"
                     app:srcCompat="@mipmap/ic_launcher" />
 
@@ -49,7 +49,7 @@
                         android:id="@+id/savedName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(date_and_info.user.name)}"
+                        android:text="@{String.valueOf(date_and_user.user.name)}"
                         android:textColor="@android:color/black"
                         android:textSize="17sp" />
 
@@ -59,7 +59,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="@{String.valueOf(date_and_info.user.city)}" />
+                        android:text="@{String.valueOf(date_and_user.user.city)}" />
             </LinearLayout>
 
             <TextView
@@ -69,7 +69,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginStart="30dp"
-                    android:text='@{String.valueOf("[" + date_and_info.dateCurrent.dateCurrent + "]")}' />
+                    android:text='@{String.valueOf("[" + date_and_user.date.dateCurrent + "]")}' />
 
 
             <ImageView

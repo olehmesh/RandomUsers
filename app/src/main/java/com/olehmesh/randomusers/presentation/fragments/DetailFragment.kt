@@ -33,7 +33,7 @@ class DetailFragment : Fragment() {
     lateinit var userEntity: UserEntity
 
     @Inject
-    lateinit var dateCurrent: DateCurrent
+    lateinit var date: DateCurrent
 
     private val scope = CoroutineScope(Job())
 
@@ -75,9 +75,9 @@ class DetailFragment : Fragment() {
                     userEntity.image =
                         requireArguments().getString(R.string.image.toString()).toString()
 
-                    dateCurrent.dateCurrent = timeToDate()
+                    date.dateCurrent = timeToDate()
 
-                    daoUserAndDate?.insertUserAndDate(userEntity, dateCurrent)
+                    daoUserAndDate?.insertUserAndDate(userEntity, date)
 
                 }
 
@@ -85,7 +85,7 @@ class DetailFragment : Fragment() {
                 Toast.makeText(context, "Successfully added", Toast.LENGTH_SHORT).show()
                 bottom_app_bar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
                 fab_bottom.isEnabled = false
-                delay(2400)
+                delay(2000)
                 navController =
                     Navigation.findNavController(context as Activity, R.id.nav_host_fragment)
                 navController.navigate(R.id.fragment_main)

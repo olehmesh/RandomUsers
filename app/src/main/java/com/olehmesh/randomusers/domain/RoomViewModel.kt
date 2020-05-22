@@ -4,11 +4,11 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import com.olehmesh.randomusers.repository.database.DatabaseManager
-import com.olehmesh.randomusers.repository.database.relation.DateAndInfo
+import com.olehmesh.randomusers.repository.database.relation.DateAndUser
 
 class RoomViewModel(application: Application) : AndroidViewModel(application) {
 
-    var dbLiveData: LiveData<MutableList<DateAndInfo>>
+    var dbLiveData: LiveData<MutableList<DateAndUser>>
 
     init {
 
