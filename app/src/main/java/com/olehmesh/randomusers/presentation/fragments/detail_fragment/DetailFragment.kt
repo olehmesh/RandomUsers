@@ -1,4 +1,4 @@
-package com.olehmesh.randomusers.presentation.fragments
+package com.olehmesh.randomusers.presentation.fragments.detail_fragment
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -14,6 +15,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.olehmesh.randomusers.R
+import com.olehmesh.randomusers.databinding.FragmentDetailBinding
 import com.olehmesh.randomusers.di.App
 import com.olehmesh.randomusers.repository.database.DatabaseManager
 import com.olehmesh.randomusers.repository.database.entity.DateCurrent
@@ -42,27 +44,37 @@ class DetailFragment : Fragment() {
 
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         App.component.createDetailComponent().inject(this)
-        return inflater.inflate(R.layout.fragment_detail, container, false)
+
+        val binding: FragmentDetailBinding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_detail, container, false)
+
+
+        val detail =
+            DetailModel(
+                requireArguments().getString(R.string.name.toString()),
+                requireArguments().getString(R.string.city.toString()),
+                requireArguments().getString(R.string.email.toString()),
+                requireArguments().getString(R.string.phone.toString())
+            )
+
+        binding.result = detail
+
+        return binding.root
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        tvDetailName!!.text = requireArguments().getString(R.string.name.toString())
-        tvDetailCity!!.text = requireArguments().getString(R.string.city.toString())
-
         Glide.with(this).asBitmap()
             .load(requireArguments().getString(R.string.image.toString()))
             .apply(RequestOptions().encodeQuality(100))
             .into(ivDetailLarge)
-
-        tvDetailEmail!!.text = requireArguments().getString(R.string.email.toString())
-        tvDetailPhone!!.text = requireArguments().getString(R.string.phone.toString())
 
 
         fab_bottom.setOnClickListener {

@@ -6,17 +6,17 @@ import com.google.gson.annotations.SerializedName
 data class Result(
 
     @SerializedName("name")
-    var name: Name? = null,
+    var name: Name?,
 
     @SerializedName("location")
-    var location: Location? = null,
+    var location: Location?,
 
     @SerializedName("email")
-    var email: String? = null,
+    var email: String?,
 
     @SerializedName("phone")
-    var phone: String? = null,
+    var phone: String?,
 
     @SerializedName("picture")
-    var picture: Picture? = null
+    var picture: Picture?
 )

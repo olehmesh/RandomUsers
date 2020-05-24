@@ -20,5 +20,4 @@ class RoomViewModel : ViewModel() {
         val usersAndDateDao = db.daoUserAndDate().getDateAndUsers()
         dbLiveData = usersAndDateDao
     }
-
 }

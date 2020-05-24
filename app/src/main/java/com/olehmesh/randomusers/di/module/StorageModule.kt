@@ -1,6 +1,6 @@
 package com.olehmesh.randomusers.di.module
 
-import android.app.Application
+import android.content.Context
 import androidx.room.Room
 import com.olehmesh.randomusers.di.scope.ApiScope
 import com.olehmesh.randomusers.repository.database.DatabaseManager
@@ -11,14 +11,14 @@ import dagger.Provides
 
 
 @Module
-class StorageModule(var application: Application) {
+class StorageModule(var context: Context) {
 
     lateinit var db: DatabaseManager
 
     @ApiScope
     @Provides
-    fun provideContext(): Application {
-        return application
+    fun provideContext(): Context {
+        return context
     }
 
 
@@ -26,7 +26,7 @@ class StorageModule(var application: Application) {
     @Provides
     fun provideDatabase(): DatabaseManager {
 
-        db = Room.databaseBuilder(application, DatabaseManager::class.java, "db_rand_users")
+        db = Room.databaseBuilder(context, DatabaseManager::class.java, "db_rand_users")
             .build()
         return db
 

@@ -12,7 +12,6 @@ class MainViewModel : ViewModel() {
 
     var liveData: LiveData<PagedList<Result>>
 
-
     init {
         val config = PagedList.Config.Builder()
             .setPageSize(10)

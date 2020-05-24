@@ -51,11 +51,11 @@ class UsersAdapter : PagedListAdapter<Result, UsersAdapter.ItemViewHolder>(DiffU
 
             val bundle = Bundle()
 
-            bundle.putString(R.string.name.toString(), mList?.name!!.first)
-            bundle.putString(R.string.city.toString(), mList.location!!.city)
-            bundle.putString(R.string.image.toString(), mList.picture!!.large)
-            bundle.putString(R.string.email.toString(), mList.email)
-            bundle.putString(R.string.phone.toString(), mList.phone)
+            bundle.putString(R.string.name.toString(), mList?.name?.first)
+            bundle.putString(R.string.city.toString(), mList?.location?.city)
+            bundle.putString(R.string.image.toString(), mList?.picture?.large)
+            bundle.putString(R.string.email.toString(), mList?.email)
+            bundle.putString(R.string.phone.toString(), mList?.phone)
 
             navController.navigate(
                 R.id.fragment_detail,
