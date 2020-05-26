@@ -18,5 +18,8 @@ data class Result(
     var phone: String?,
 
     @SerializedName("picture")
-    var picture: Picture?
+    var picture: Picture?,
+
+    @SerializedName("dob")
+    var dob: Dob?
 )

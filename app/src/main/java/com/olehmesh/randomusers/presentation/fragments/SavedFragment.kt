@@ -24,6 +24,7 @@ import javax.inject.Inject
 
 
 class SavedFragment : Fragment(), SavedAdapter.OnDeleteListener {
+
     private val roomViewModel by viewModels<RoomViewModel>()
     private val scope = CoroutineScope(Job())
 

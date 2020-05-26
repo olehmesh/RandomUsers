@@ -1,11 +1,14 @@
 <resources>
 
     <string name="app_name">Random Users</string>
-
+    <string name="date">Date</string>
     <string name="name">Name</string>
     <string name="city">City</string>
     <string name="image">Image</string>
     <string name="email">Email</string>
     <string name="phone">Phone</string>
+    <string name="longitude">Longitude</string>
+    <string name="latitude">Latitude</string>
+    <string name="title_activity_maps">Map</string>
 
 </resources>

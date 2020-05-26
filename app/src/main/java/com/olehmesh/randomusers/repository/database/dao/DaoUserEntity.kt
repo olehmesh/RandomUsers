@@ -7,7 +7,7 @@ import com.olehmesh.randomusers.repository.database.entity.UserEntity
 @Dao
 interface DaoUserEntity {
 
-    @get:Query("SELECT * FROM table_info")
+    @get:Query("SELECT * FROM table_user_info")
     val allUsersDB: LiveData<MutableList<UserEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

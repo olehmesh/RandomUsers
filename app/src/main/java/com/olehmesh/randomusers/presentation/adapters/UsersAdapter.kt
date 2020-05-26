@@ -57,6 +57,10 @@ class UsersAdapter : PagedListAdapter<Result, UsersAdapter.ItemViewHolder>(DiffU
             bundle.putString(R.string.email.toString(), mList?.email)
             bundle.putString(R.string.phone.toString(), mList?.phone)
 
+            bundle.putString(R.string.latitude.toString(), mList?.location?.coordinates?.latitude)
+            bundle.putString(R.string.longitude.toString(), mList?.location?.coordinates?.longitude)
+            bundle.putString(R.string.date.toString(), mList?.dob?.date)
+
             navController.navigate(
                 R.id.fragment_detail,
                 bundle,

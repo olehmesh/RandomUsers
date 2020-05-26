@@ -7,7 +7,7 @@ import retrofit2.http.Query
 
 interface ApiService {
 
-    @GET("api/?inc=name,location,email,phone,picture")
+    @GET("api/?inc=name,location,email,dob,phone,picture")
     suspend fun fetchUsers(
         @Query("limit") loadSize: Int = 30,
         @Query("after") after: Int = 20,

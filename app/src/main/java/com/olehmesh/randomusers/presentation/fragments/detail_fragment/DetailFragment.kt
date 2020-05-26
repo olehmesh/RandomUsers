@@ -2,11 +2,13 @@ package com.olehmesh.randomusers.presentation.fragments.detail_fragment
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
@@ -18,12 +20,11 @@ import com.olehmesh.randomusers.R
 import com.olehmesh.randomusers.databinding.FragmentDetailBinding
 import com.olehmesh.randomusers.di.App
 import com.olehmesh.randomusers.repository.database.DatabaseManager
-import com.olehmesh.randomusers.repository.database.entity.DateCurrent
+import com.olehmesh.randomusers.repository.database.entity.DateLatLng
 import com.olehmesh.randomusers.repository.database.entity.UserEntity
 import kotlinx.android.synthetic.main.fragment_detail.*
 import kotlinx.coroutines.*
 import java.text.SimpleDateFormat
-import java.util.*
 import javax.inject.Inject
 
 
@@ -35,7 +36,7 @@ class DetailFragment : Fragment() {
     lateinit var userEntity: UserEntity
 
     @Inject
-    lateinit var date: DateCurrent
+    lateinit var date: DateLatLng
 
     @Inject
     lateinit var db: DatabaseManager
@@ -52,7 +53,6 @@ class DetailFragment : Fragment() {
 
         val binding: FragmentDetailBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_detail, container, false)
-
 
         val detail =
             DetailModel(
@@ -76,7 +76,6 @@ class DetailFragment : Fragment() {
             .apply(RequestOptions().encodeQuality(100))
             .into(ivDetailLarge)
 
-
         fab_bottom.setOnClickListener {
 
             scope.launch(Dispatchers.Main) {
@@ -84,12 +83,14 @@ class DetailFragment : Fragment() {
 
                     val daoUserAndDate = db.daoUserAndDate()
 
-                    userEntity.name = tvDetailName!!.text as String
-                    userEntity.city = tvDetailCity!!.text as String
+                    userEntity.name = requireArguments().getString(R.string.name.toString())
+                    userEntity.city = requireArguments().getString(R.string.city.toString())
                     userEntity.image =
                         requireArguments().getString(R.string.image.toString()).toString()
 
-                    date.dateCurrent = timeToDate()
+                    date.latitude = requireArguments().getString(R.string.latitude.toString())
+                    date.longitude = requireArguments().getString(R.string.longitude.toString())
+                    date.date = timeToDate()
 
                     daoUserAndDate.insertUserAndDate(userEntity, date)
 
@@ -109,13 +110,14 @@ class DetailFragment : Fragment() {
         }
     }
 
+
     @SuppressLint("SimpleDateFormat")
     private fun timeToDate(): String {
 
-        val currentTime = System.currentTimeMillis()
-        val simpleDateFormat = SimpleDateFormat("dd.MM 'at' HH.mm")
-        val date = Date(currentTime)
-        return simpleDateFormat.format(date)
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS")
+            .parse(requireArguments().getString(R.string.date.toString()).toString())
+
+        return SimpleDateFormat("dd.MM 'at' HH.mm").format(dateFormat!!)
 
     }
 }

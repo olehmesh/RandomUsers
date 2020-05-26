@@ -19,12 +19,16 @@
             android:label="fragment_detail"
             tools:layout="@layout/fragment_detail"/>
 
-
     <fragment
             android:id="@+id/fragment_saved"
             android:name="com.olehmesh.randomusers.presentation.fragments.SavedFragment"
             android:label="fragment_saved"
             tools:layout="@layout/fragment_saved"/>
 
+    <fragment
+            android:id="@+id/fragment_maps"
+            android:name="com.olehmesh.randomusers.presentation.fragments.MapsFragment"
+            android:label="fragment_maps"
+            tools:layout="@layout/fragment_maps" />
 
 </navigation>

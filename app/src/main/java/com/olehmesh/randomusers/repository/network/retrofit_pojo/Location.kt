@@ -5,5 +5,9 @@ import com.google.gson.annotations.SerializedName
 data class Location(
 
     @SerializedName("city")
-    var city: String? = null
+    var city: String? = null,
+
+    @SerializedName("coordinates")
+    var coordinates: Coordinates? = null
+
 )

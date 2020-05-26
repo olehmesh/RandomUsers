@@ -3,7 +3,7 @@ package com.olehmesh.randomusers.repository.database.entity
 import androidx.room.*
 
 @Entity(
-    tableName = "table_info",
+    tableName = "table_user_info",
     indices = [Index(value = ["name", "city", "image"], unique = true)]
 )
 
