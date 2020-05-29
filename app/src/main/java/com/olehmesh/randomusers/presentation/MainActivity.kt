@@ -23,13 +23,12 @@ class MainActivity : AppCompatActivity() {
 
         navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        navHostFragment.navController
 
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
 
-        menuInflater.inflate(R.menu.saved, menu)
+        menuInflater.inflate(R.menu.menu, menu)
 
         return true
     }
@@ -38,9 +37,10 @@ class MainActivity : AppCompatActivity() {
 
         when (item.itemId) {
 
-            R.id.action_add -> {
+            R.id.fragment_saved -> {
 
                 navHostFragment.navController.navigate(R.id.fragment_saved)
+
             }
         }
 

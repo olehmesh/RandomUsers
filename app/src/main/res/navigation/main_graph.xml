@@ -11,23 +11,35 @@
             android:id="@+id/fragment_main"
             android:name="com.olehmesh.randomusers.presentation.fragments.MainFragment"
             android:label="fragment_main"
-            tools:layout="@layout/fragment_main"/>
+            tools:layout="@layout/fragment_main">
+        <action
+                android:id="@+id/action_fragment_main_to_fragment_detail"
+                app:destination="@id/fragment_detail" />
+    </fragment>
 
     <fragment
             android:id="@+id/fragment_detail"
             android:name="com.olehmesh.randomusers.presentation.fragments.detail_fragment.DetailFragment"
             android:label="fragment_detail"
-            tools:layout="@layout/fragment_detail"/>
+            tools:layout="@layout/fragment_detail">
+        <action
+                android:id="@+id/action_fragment_detail_to_fragment_saved"
+                app:destination="@id/fragment_saved" />
+    </fragment>
 
     <fragment
             android:id="@+id/fragment_saved"
-            android:name="com.olehmesh.randomusers.presentation.fragments.SavedFragment"
+            android:name="com.olehmesh.randomusers.presentation.fragments.saved_fragment.SavedFragment"
             android:label="fragment_saved"
-            tools:layout="@layout/fragment_saved"/>
+            tools:layout="@layout/fragment_saved">
+        <action
+                android:id="@+id/action_fragment_saved_to_fragment_maps"
+                app:destination="@id/fragment_maps" />
+    </fragment>
 
     <fragment
             android:id="@+id/fragment_maps"
-            android:name="com.olehmesh.randomusers.presentation.fragments.MapsFragment"
+            android:name="com.olehmesh.randomusers.presentation.fragments.maps_fragment.MapsFragment"
             android:label="fragment_maps"
             tools:layout="@layout/fragment_maps" />
 

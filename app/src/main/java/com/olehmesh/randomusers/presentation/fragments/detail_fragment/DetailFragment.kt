@@ -2,13 +2,11 @@ package com.olehmesh.randomusers.presentation.fragments.detail_fragment
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
@@ -90,7 +88,7 @@ class DetailFragment : Fragment() {
 
                     date.latitude = requireArguments().getString(R.string.latitude.toString())
                     date.longitude = requireArguments().getString(R.string.longitude.toString())
-                    date.date = timeToDate()
+                    date.date = getAndFormatDate()
 
                     daoUserAndDate.insertUserAndDate(userEntity, date)
 
@@ -112,7 +110,7 @@ class DetailFragment : Fragment() {
 
 
     @SuppressLint("SimpleDateFormat")
-    private fun timeToDate(): String {
+    private fun getAndFormatDate(): String {
 
         val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS")
             .parse(requireArguments().getString(R.string.date.toString()).toString())

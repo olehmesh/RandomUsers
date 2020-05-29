@@ -8,7 +8,7 @@ import com.olehmesh.randomusers.di.module.StorageModule
 import com.olehmesh.randomusers.di.scope.ApiScope
 import com.olehmesh.randomusers.domain.RoomViewModel
 import com.olehmesh.randomusers.presentation.fragments.MainFragment
-import com.olehmesh.randomusers.presentation.fragments.SavedFragment
+import com.olehmesh.randomusers.presentation.fragments.saved_fragment.SavedFragment
 import com.olehmesh.randomusers.repository.ItemKeyedSource
 import dagger.Component
 

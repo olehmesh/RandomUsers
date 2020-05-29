@@ -1,4 +1,4 @@
-package com.olehmesh.randomusers.presentation.fragments
+package com.olehmesh.randomusers.presentation.fragments.saved_fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater

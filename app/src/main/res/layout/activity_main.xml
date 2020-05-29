@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.appbar.AppBarLayout android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:theme="@style/AppTheme.AppBarOverlay"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:theme="@style/AppTheme.AppBarOverlay"
         xmlns:android="http://schemas.android.com/apk/res/android">
 
     <androidx.appcompat.widget.Toolbar
@@ -23,7 +24,7 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <androidx.fragment.app.FragmentContainerView xmlns:tools="http://schemas.android.com/tools"
+    <androidx.fragment.app.FragmentContainerView
             android:id="@+id/nav_host_fragment"
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
@@ -33,5 +34,3 @@
             app:navGraph="@navigation/main_graph" />
 
 </com.google.android.material.appbar.AppBarLayout>
-
-
